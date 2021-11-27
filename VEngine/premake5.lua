@@ -11,6 +11,12 @@ workspace "VEngine" --解决方案名称
 --详细的所有支持的tokens 可参考 [https://github.com/premake/premake-core/wiki/Tokens]
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+--添加GLFW的引用
+Includedirs = {}
+Includedirs["GLFW"] = "VEngine/vendor/GLFW/include"
+
+include "VEngine/vendor/GLFW"
+
 project "VEngine" --项目名称
     location "VEngine" --相对路径
     kind "SharedLib" --表明该项目是dll动态库
@@ -20,7 +26,7 @@ project "VEngine" --项目名称
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")--中间临时文件的目录
 
 	pchheader "VEnginePCH.h"
-	pchsource "VEngine/src/VEnginePCH.cpp"
+	pchsource "VEngine/src/VEngine/VEnginePCH.cpp"
 
     files--该项目的文件
     {
@@ -30,8 +36,15 @@ project "VEngine" --项目名称
 
     includedirs--附加包含目录
     {
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+		"%{Includedirs.GLFW}"
     }
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
+	}
 
     filter "system:windows"--windows平台的配置
         cppdialect "c++17"

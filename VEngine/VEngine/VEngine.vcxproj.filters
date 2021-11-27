@@ -1,48 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="VEngine">
-      <UniqueIdentifier>{51C9C488-BDA8-4324-C6C0-CEFA321FAA85}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="VEngine\Events">
-      <UniqueIdentifier>{15B0B2C0-017E-A6C6-EA11-17EDD67E822B}</UniqueIdentifier>
+    <Filter Include="Events">
+      <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\VEngine\Application.h">
-      <Filter>VEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\VEngine\Core.h">
-      <Filter>VEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\VEngine\EntryPoint.h">
-      <Filter>VEngine</Filter>
-    </ClInclude>
+    <ClInclude Include="src\VEngine\Application.h" />
+    <ClInclude Include="src\VEngine\Core.h" />
+    <ClInclude Include="src\VEngine\EntryPoint.h" />
     <ClInclude Include="src\VEngine\Events\ApplicationEvent.h">
-      <Filter>VEngine\Events</Filter>
+      <Filter>Events</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Events\Event.h">
-      <Filter>VEngine\Events</Filter>
+      <Filter>Events</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Events\KeyEvent.h">
-      <Filter>VEngine\Events</Filter>
+      <Filter>Events</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Events\MouseEvent.h">
-      <Filter>VEngine\Events</Filter>
+      <Filter>Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\VEngine\Log.h">
-      <Filter>VEngine</Filter>
-    </ClInclude>
+    <ClInclude Include="src\VEngine\Log.h" />
     <ClInclude Include="src\VEngine\VEngine.h" />
     <ClInclude Include="src\VEngine\VEnginePCH.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\VEngine\Application.cpp">
-      <Filter>VEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\VEngine\Log.cpp">
-      <Filter>VEngine</Filter>
-    </ClCompile>
+    <ClCompile Include="src\VEngine\Application.cpp" />
+    <ClCompile Include="src\VEngine\Log.cpp" />
     <ClCompile Include="src\VEngine\VEnginePCH.cpp" />
   </ItemGroup>
 </Project>
