@@ -77,7 +77,8 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VEnginePCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>VENGINE_BUILD_DLL;VENGINE_PLATFORM_WINDOWS;_WINDLL;_UNICODE;UNICODE;VENGINE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -97,7 +98,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VEnginePCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>VENGINE_BUILD_DLL;VENGINE_PLATFORM_WINDOWS;_WINDLL;_UNICODE;UNICODE;VENGINE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -121,7 +123,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>VEnginePCH.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>VENGINE_BUILD_DLL;VENGINE_PLATFORM_WINDOWS;_WINDLL;_UNICODE;UNICODE;VENGINE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -144,21 +147,23 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\hzpch.h" />
-    <ClInclude Include="src\VEngine.h" />
+    <ClInclude Include="src\VEngine\VEngine.h" />
     <ClInclude Include="src\VEngine\Application.h" />
-    <ClInclude Include="src\VEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\VEngine\Core.h" />
     <ClInclude Include="src\VEngine\EntryPoint.h" />
+    <ClInclude Include="src\VEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\VEngine\Events\Event.h" />
     <ClInclude Include="src\VEngine\Events\KeyEvent.h" />
-    <ClInclude Include="src\VEngine\Log.h" />
     <ClInclude Include="src\VEngine\Events\MouseEvent.h" />
+    <ClInclude Include="src\VEngine\Log.h" />
+    <ClInclude Include="src\VEngine\VEnginePCH.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\hzpch.cpp" />
     <ClCompile Include="src\VEngine\Application.cpp" />
     <ClCompile Include="src\VEngine\Log.cpp" />
+    <ClCompile Include="src\VEngine\VEnginePCH.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

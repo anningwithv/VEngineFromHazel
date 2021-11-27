@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Events/Event.h"
-#include <sstream>
+#include "Event.h"
 
 namespace VEngine 
 {

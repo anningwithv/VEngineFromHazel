@@ -19,8 +19,8 @@ project "VEngine" --项目名称
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")--输出目录
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")--中间临时文件的目录
 
-	pchheader "hzpch.h"
-	pchsource "VEngine/src/hzpch.cpp"
+	pchheader "VEnginePCH.h"
+	pchsource "VEngine/src/VEnginePCH.cpp"
 
     files--该项目的文件
     {
