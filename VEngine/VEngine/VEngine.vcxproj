@@ -144,6 +144,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\hzpch.h" />
     <ClInclude Include="src\VEngine.h" />
     <ClInclude Include="src\VEngine\Application.h" />
     <ClInclude Include="src\VEngine\Events\ApplicationEvent.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="src\VEngine\Events\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\hzpch.cpp" />
     <ClCompile Include="src\VEngine\Application.cpp" />
     <ClCompile Include="src\VEngine\Log.cpp" />
   </ItemGroup>
