@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../VEnginePCH.h"
+#include "VEnginePCH.h"
 #include "../Core.h"
 
 namespace VEngine 

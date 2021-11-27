@@ -26,7 +26,7 @@ project "VEngine" --项目名称
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")--中间临时文件的目录
 
 	pchheader "VEnginePCH.h"
-	pchsource "VEngine/src/VEngine/VEnginePCH.cpp"
+	pchsource "VEngine/src/VEnginePCH.cpp"
 
     files--该项目的文件
     {
@@ -36,6 +36,7 @@ project "VEngine" --项目名称
 
     includedirs--附加包含目录
     {
+        "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
 		"%{Includedirs.GLFW}"
     }
@@ -49,15 +50,12 @@ project "VEngine" --项目名称
     filter "system:windows"--windows平台的配置
         cppdialect "c++17"
         staticruntime "On"
-        systemversion "10.0.17763.0"
+        systemversion "latest"
 
         defines --预编译宏
         {
             "VENGINE_BUILD_DLL",
-            "VENGINE_PLATFORM_WINDOWS",
-            "_WINDLL",
-            "_UNICODE",
-            "UNICODE",
+            "VENGINE_PLATFORM_WINDOWS"
         }
 
         postbuildcommands -- build后的自定义命令
@@ -108,13 +106,11 @@ project "Sandbox"
     filter "system:windows"
         cppdialect "c++17"
         staticruntime "On"
-        systemversion "10.0.17763.0"
+        systemversion "latest"
 
         defines
         {
-            "VENGINE_PLATFORM_WINDOWS",
-            "_UNICODE",
-            "UNICODE",
+            "VENGINE_PLATFORM_WINDOWS"
         }
 
     filter "configurations:Debug"

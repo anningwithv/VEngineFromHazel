@@ -1,33 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Events">
-      <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VEngine">
+      <UniqueIdentifier>{51C9C488-BDA8-4324-C6C0-CEFA321FAA85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VEngine\Events">
+      <UniqueIdentifier>{15B0B2C0-017E-A6C6-EA11-17EDD67E822B}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\VEngine\Application.h" />
-    <ClInclude Include="src\VEngine\Core.h" />
-    <ClInclude Include="src\VEngine\EntryPoint.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine.h" />
+    <ClInclude Include="src\VEngine\Application.h">
+      <Filter>VEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Core.h">
+      <Filter>VEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\EntryPoint.h">
+      <Filter>VEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\VEngine\Events\ApplicationEvent.h">
-      <Filter>Events</Filter>
+      <Filter>VEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Events\Event.h">
-      <Filter>Events</Filter>
+      <Filter>VEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Events\KeyEvent.h">
-      <Filter>Events</Filter>
+      <Filter>VEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Events\MouseEvent.h">
-      <Filter>Events</Filter>
+      <Filter>VEngine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\VEngine\Log.h" />
-    <ClInclude Include="src\VEngine\VEngine.h" />
-    <ClInclude Include="src\VEngine\VEnginePCH.h" />
+    <ClInclude Include="src\VEngine\Log.h">
+      <Filter>VEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Window.h">
+      <Filter>VEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEnginePCH.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\VEngine\Application.cpp" />
-    <ClCompile Include="src\VEngine\Log.cpp" />
-    <ClCompile Include="src\VEngine\VEnginePCH.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VEngine\Application.cpp">
+      <Filter>VEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VEngine\Log.cpp">
+      <Filter>VEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VEnginePCH.cpp" />
   </ItemGroup>
 </Project>
