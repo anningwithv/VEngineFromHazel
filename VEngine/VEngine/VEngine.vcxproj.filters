@@ -4,6 +4,9 @@
     <Filter Include="VEngine">
       <UniqueIdentifier>{51C9C488-BDA8-4324-C6C0-CEFA321FAA85}</UniqueIdentifier>
     </Filter>
+    <Filter Include="VEngine\Events">
+      <UniqueIdentifier>{1f35cda2-6036-4388-9110-547db0806fc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\VEngine.h" />
@@ -19,17 +22,17 @@
     <ClInclude Include="src\VEngine\Log.h">
       <Filter>VEngine</Filter>
     </ClInclude>
-    <ClInclude Include="src\VEngine\ApplicationEvent.h">
-      <Filter>VEngine</Filter>
+    <ClInclude Include="src\VEngine\Events\KeyEvent.h">
+      <Filter>VEngine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\VEngine\KeyEvent.h">
-      <Filter>VEngine</Filter>
+    <ClInclude Include="src\VEngine\Events\ApplicationEvent.h">
+      <Filter>VEngine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\VEngine\MouseEvent.h">
-      <Filter>VEngine</Filter>
+    <ClInclude Include="src\VEngine\Events\MouseEvent.h">
+      <Filter>VEngine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\VEngine\Event.h">
-      <Filter>VEngine</Filter>
+    <ClInclude Include="src\VEngine\Events\Event.h">
+      <Filter>VEngine\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 #include <functional>
 #include <string>
 
-#include "Core.h"
+#include "../Core.h"
 
 namespace VEngine 
 {

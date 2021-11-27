@@ -146,13 +146,13 @@
   <ItemGroup>
     <ClInclude Include="src\VEngine.h" />
     <ClInclude Include="src\VEngine\Application.h" />
-    <ClInclude Include="src\VEngine\ApplicationEvent.h" />
+    <ClInclude Include="src\VEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\VEngine\Core.h" />
     <ClInclude Include="src\VEngine\EntryPoint.h" />
-    <ClInclude Include="src\VEngine\Event.h" />
-    <ClInclude Include="src\VEngine\KeyEvent.h" />
+    <ClInclude Include="src\VEngine\Events\Event.h" />
+    <ClInclude Include="src\VEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\VEngine\Log.h" />
-    <ClInclude Include="src\VEngine\MouseEvent.h" />
+    <ClInclude Include="src\VEngine\Events\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\VEngine\Application.cpp" />
