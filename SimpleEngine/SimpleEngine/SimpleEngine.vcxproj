@@ -84,19 +84,19 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Study\VEngineFromHazel\SimpleEngine\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;src;vendor/spdlog/include</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>VEnginePCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Study\VEngineFromHazel\SimpleEngine\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -155,6 +155,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="SimpleEngine.cpp" />
+    <ClCompile Include="src\VEnginePCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\VEngine\Application.cpp" />
+    <ClCompile Include="src\VEngine\Log.cpp" />
+    <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\VEngine.h" />
+    <ClInclude Include="src\VEnginePCH.h" />
+    <ClInclude Include="src\VEngine\Application.h" />
+    <ClInclude Include="src\VEngine\Core.h" />
+    <ClInclude Include="src\VEngine\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\VEngine\Events\Event.h" />
+    <ClInclude Include="src\VEngine\Events\KeyEvent.h" />
+    <ClInclude Include="src\VEngine\Events\MouseEvent.h" />
+    <ClInclude Include="src\VEngine\Log.h" />
+    <ClInclude Include="src\VEngine\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WinWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
