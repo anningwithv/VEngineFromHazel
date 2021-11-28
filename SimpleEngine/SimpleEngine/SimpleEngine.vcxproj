@@ -84,7 +84,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -163,6 +163,7 @@
     <ClCompile Include="src\VEngine\Application.cpp" />
     <ClCompile Include="src\VEngine\Log.cpp" />
     <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
+    <ClCompile Include="vendor\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\VEngine\Layer\LayerStack.h" />

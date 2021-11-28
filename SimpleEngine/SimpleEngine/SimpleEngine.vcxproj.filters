@@ -36,6 +36,9 @@
     <ClCompile Include="src\VEngine\Layer\LayerStack.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="vendor\glad\glad.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\VEngine\Events\ApplicationEvent.h">

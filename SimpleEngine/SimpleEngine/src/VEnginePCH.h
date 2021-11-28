@@ -11,6 +11,7 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include <glad/glad.h>
 
 #ifdef VENGINE_PLATFORM_WINDOWS
 #include <Windows.h>
