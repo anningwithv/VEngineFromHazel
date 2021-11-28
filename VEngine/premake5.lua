@@ -65,17 +65,17 @@ project "VEngine" --项目名称
 
     filter "configurations:Debug"
         defines "VENGINE_DEBUG"
-        runtime "Debug"
+        buildoptions "/MDd"
         symbols "on"
 
     filter "configurations:Release"
         defines "VENGINE_RELEASE"
-        runtime "Release"
+        buildoptions "/MD"
         optimize "on"
 
     filter "configurations:Dist"
         defines "VENGINE_DIST"
-        runtime "Release"
+        buildoptions "/MD"
         optimize "on"
 
 project "Sandbox"

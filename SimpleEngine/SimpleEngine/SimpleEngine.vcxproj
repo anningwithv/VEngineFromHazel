@@ -154,6 +154,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\VEngine\Layer\LayerStack.cpp" />
+    <ClCompile Include="src\VEngine\Layer\Layer.cpp" />
     <ClCompile Include="SimpleEngine.cpp" />
     <ClCompile Include="src\VEnginePCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -163,6 +165,8 @@
     <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\VEngine\Layer\LayerStack.h" />
+    <ClInclude Include="src\VEngine\Layer\Layer.h" />
     <ClInclude Include="src\VEngine.h" />
     <ClInclude Include="src\VEnginePCH.h" />
     <ClInclude Include="src\VEngine\Application.h" />
