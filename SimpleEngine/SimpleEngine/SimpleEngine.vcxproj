@@ -163,7 +163,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\VEngine\Renderer\Buffer.cpp" />
     <ClCompile Include="client\GameApplication.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\VEngine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Shader.cpp" />
     <ClCompile Include="src\VEngine\Renderer\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
@@ -187,6 +190,9 @@
     <ClCompile Include="vendor\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\VEngine\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\VEngine\Renderer\Renderer.h" />
     <ClInclude Include="src\VEngine\Renderer\Shader.h" />
     <ClInclude Include="src\VEngine\Renderer\GraphicContext.h" />
     <ClInclude Include="src\VEngine\Renderer\OpenGLContext.h" />

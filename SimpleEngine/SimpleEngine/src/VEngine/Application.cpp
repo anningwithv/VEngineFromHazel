@@ -31,12 +31,13 @@ namespace VEngine
 		//Bind VAO
 		glBindVertexArray(VAO);
 
-		//Generate VBO
-		glGenBuffers(1, &VBO);
-		//Bind VBO to GL_ARRAY_BUFFER
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		//glBufferData is used to set custom data to current ArrayBuffer
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		////Generate VBO
+		//glGenBuffers(1, &VBO);
+		////Bind VBO to GL_ARRAY_BUFFER
+		//glBindBuffer(GL_ARRAY_BUFFER, VBO);
+		////glBufferData is used to set custom data to current ArrayBuffer
+		//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 		
 		//glVertexAttribPointer函数告诉OpenGL该如何解析顶点数据（应用到逐个顶点属性上）
 		//第一个参数指定我们要配置的顶点属性。还记得我们在顶点着色器中使用layout(location = 0)
@@ -51,11 +52,11 @@ namespace VEngine
 		glEnableVertexAttribArray(0);
 
 		//创建索引缓冲对象EBO,它专门储存索引，OpenGL调用这些顶点的索引来决定该绘制哪个顶点
-		glGenBuffers(1, &EBO);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-
 		unsigned int indices[3] = { 0, 1, 2 };
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/sizeof(unsigned int)));
+		//glGenBuffers(1, &EBO);
+		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+		//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 		std::string vertexSrc = R"(
 			#version 330 core
@@ -100,7 +101,7 @@ namespace VEngine
 
 			m_Shader->Bind();
 			glBindVertexArray(VAO);
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, 0);
 			//glDrawArrays(GL_TRIANGLES, 0, 3);
 			//glBindVertexArray(0);
 
