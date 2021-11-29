@@ -5,7 +5,7 @@
 
 namespace VEngine
 {
-	class WinWindow : Window
+	class WinWindow : public Window
 	{
 	public:
 		WinWindow(const WindowProps& props);

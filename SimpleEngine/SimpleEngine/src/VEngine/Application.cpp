@@ -7,8 +7,12 @@ namespace VEngine
 {
 	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application() 
 	{
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<WinWindow>( WinWindow::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	}
@@ -54,15 +58,17 @@ namespace VEngine
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
-	Application * CreateApplication()
-	{
-		return new Application();
-	}
+	//Application * CreateApplication()
+	//{
+	//	return new Application();
+	//}
 }
