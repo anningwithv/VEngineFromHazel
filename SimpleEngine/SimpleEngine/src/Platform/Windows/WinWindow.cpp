@@ -9,6 +9,7 @@
 #include "VEngine/Events/ApplicationEvent.h"
 #include "VEngine/Events/MouseEvent.h"
 #include "VEngine/Events/KeyEvent.h"
+#include "VEngine/Renderer/OpenGLContext.h"
 
 namespace VEngine
 {
@@ -55,10 +56,8 @@ namespace VEngine
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		
-		glfwMakeContextCurrent(m_Window);
-
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		VENGINE_CORE_ASSERT(status, "Failed to initialize Glad!");
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
@@ -162,7 +161,8 @@ namespace VEngine
 	void WinWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		
+		m_Context->SwapBuffers();
 	}
 
 	void WinWindow::SetVSync(bool enabled)

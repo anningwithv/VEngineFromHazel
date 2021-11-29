@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="client\GameApplication.cpp" />
+    <ClCompile Include="src\VEngine\Renderer\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\VEngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="include\ImGui\imgui.cpp" />
@@ -185,6 +186,8 @@
     <ClCompile Include="vendor\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\VEngine\Renderer\GraphicContext.h" />
+    <ClInclude Include="src\VEngine\Renderer\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\VEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="include\ImGui\imconfig.h" />

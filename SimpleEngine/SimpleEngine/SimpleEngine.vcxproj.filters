@@ -69,6 +69,9 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\VEngine\Renderer\OpenGLContext.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\VEngine\Events\ApplicationEvent.h">
@@ -150,6 +153,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\MouseButtonCodes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\OpenGLContext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\GraphicContext.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

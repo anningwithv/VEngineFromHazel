@@ -1,6 +1,8 @@
 #pragma once
 
 #include "VEngine/Window.h"
+#include "VEngine/Renderer/GraphicContext.h"
+
 #include <GLFW/glfw3.h>
 
 namespace VEngine
@@ -27,6 +29,7 @@ namespace VEngine
 		void SetGLFWCallbacks();
 		virtual void Shutdown();
 	private:
+		GraphicContext* m_Context;
 		GLFWwindow* m_Window;
 
 		struct WindowData
