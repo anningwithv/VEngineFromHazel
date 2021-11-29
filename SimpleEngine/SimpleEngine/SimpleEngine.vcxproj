@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="client\GameApplication.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\VEngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="include\ImGui\imgui.cpp" />
     <ClCompile Include="include\ImGui\imgui_demo.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="vendor\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\VEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="include\ImGui\imconfig.h" />
     <ClInclude Include="include\ImGui\imgui.h" />
@@ -194,6 +196,8 @@
     <ClInclude Include="include\ImGui\imgui_impl_glfw.h" />
     <ClInclude Include="include\ImGui\imgui_impl_opengl3.h" />
     <ClInclude Include="include\ImGui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="src\VEngine\Input.h" />
+    <ClInclude Include="src\VEngine\KeyCodes.h" />
     <ClInclude Include="src\VEngine\Layer\LayerStack.h" />
     <ClInclude Include="src\VEngine\Layer\Layer.h" />
     <ClInclude Include="src\VEngine.h" />
@@ -205,6 +209,7 @@
     <ClInclude Include="src\VEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\VEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\VEngine\Log.h" />
+    <ClInclude Include="src\VEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\VEngine\Window.h" />
     <ClInclude Include="src\Platform\Windows\WinWindow.h" />
   </ItemGroup>

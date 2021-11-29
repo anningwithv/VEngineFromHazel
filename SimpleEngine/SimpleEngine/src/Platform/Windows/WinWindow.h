@@ -21,7 +21,7 @@ namespace VEngine
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 		static WinWindow* Create(const WindowProps& props = WindowProps());
-
+		inline virtual void* GetNativeWindow() const { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);
 		void SetGLFWCallbacks();

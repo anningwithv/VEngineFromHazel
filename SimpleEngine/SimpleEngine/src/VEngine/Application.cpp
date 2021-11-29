@@ -2,6 +2,7 @@
 #include "Application.h"
 //#include <cstdio>
 #include "Log.h"
+#include "Input.h"
 
 namespace VEngine 
 {
