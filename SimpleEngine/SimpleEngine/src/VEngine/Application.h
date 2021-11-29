@@ -6,6 +6,8 @@
 #include "VEngine/Events/Event.h"
 #include "VEngine/Events/ApplicationEvent.h"
 #include "VEngine/Layer/LayerStack.h"
+#include "Renderer/Shader.h"
+#include "ImGui/ImGuiLayer.h"
 
 namespace VEngine 
 {
@@ -27,7 +29,12 @@ namespace VEngine
 		std::unique_ptr<Window> m_Window;
 		bool m_IsRunning = true;
 
+		ImGuiLayer* m_ImGuiLayer;
+
 		LayerStack m_LayerStack;
+
+		unsigned int VAO, VBO, EBO;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
