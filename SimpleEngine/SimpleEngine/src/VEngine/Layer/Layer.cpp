@@ -7,9 +7,4 @@ namespace VEngine
 	{
 		m_DebugName = debugName;
 	}
-
-	Layer::~Layer()
-	{
-
-	}
 }
