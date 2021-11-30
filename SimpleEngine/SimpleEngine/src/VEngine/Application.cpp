@@ -3,6 +3,7 @@
 #include "Log.h"
 #include "Input.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
+#include "VEngine/Renderer/Renderer.h"
 
 namespace VEngine 
 {
@@ -26,10 +27,6 @@ namespace VEngine
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
 		};
 
-		////Generate VAO
-		//glGenVertexArrays(1, &VAO);
-		////Bind VAO
-		//glBindVertexArray(VAO);
 		m_VertexArray.reset(VertexArray::Create());
 
 		std::shared_ptr<VertexBuffer> vertexBuffer;
@@ -90,15 +87,16 @@ namespace VEngine
 	{
 		while (m_IsRunning)
 		{
-			glClearColor(0, 0, 0, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RendererCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+			RendererCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_Shader->Bind();
-			//glBindVertexArray(VAO);
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
-			//glDrawArrays(GL_TRIANGLES, 0, 3);
-			//glBindVertexArray(0);
+			
+			Renderer::Submit(m_VertexArray);
+
+			Renderer::EndScene();
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
