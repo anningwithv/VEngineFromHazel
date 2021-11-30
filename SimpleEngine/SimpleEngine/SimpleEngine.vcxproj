@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Buffer.cpp" />
     <ClCompile Include="client\GameApplication.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
@@ -188,8 +189,10 @@
     <ClCompile Include="src\VEngine\Log.cpp" />
     <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
     <ClCompile Include="vendor\glad\glad.c" />
+    <ClCompile Include="src\VEngine\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\VEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\VEngine\Renderer\Renderer.h" />
@@ -223,6 +226,7 @@
     <ClInclude Include="src\VEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\VEngine\Window.h" />
     <ClInclude Include="src\Platform\Windows\WinWindow.h" />
+    <ClInclude Include="src\VEngine\Renderer\VertexArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

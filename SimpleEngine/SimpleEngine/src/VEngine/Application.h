@@ -9,6 +9,7 @@
 #include "Renderer/Shader.h"
 #include "ImGui/ImGuiLayer.h"
 #include "Renderer/Buffer.h"
+#include "Renderer/VertexArray.h"
 
 namespace VEngine 
 {
@@ -35,9 +36,11 @@ namespace VEngine
 		LayerStack m_LayerStack;
 
 		unsigned int VAO, VBO, EBO;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
-		std::unique_ptr<Shader> m_Shader;
+		//std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		//std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::shared_ptr<VertexArray> m_VertexArray;
+		std::shared_ptr<Shader> m_Shader;
+
 	private:
 		static Application* s_Instance;
 	};
