@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 #include "VEngine/Renderer/Renderer.h"
+#include "GameMode.h"
 
 namespace VEngine 
 {
@@ -15,11 +16,14 @@ namespace VEngine
 	{
 		s_Instance = this;
 
+		GameMode::SetGameMode(GameMode::Mode::D2);
+
 		m_Window = std::unique_ptr<WinWindow>( WinWindow::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
 		//m_ImGuiLayer = new ImGuiLayer();
 		//PushOverlay(m_ImGuiLayer);
+		m_Camera = Camera::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -51,6 +55,8 @@ namespace VEngine
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;
 
+			uniform mat4 u_ViewProjection;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
 
@@ -58,7 +64,7 @@ namespace VEngine
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = vec4(a_Position, 1.0);	
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);	
 			}
 		)";
 
@@ -90,13 +96,9 @@ namespace VEngine
 			RendererCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 			RendererCommand::Clear();
 
-			Renderer::BeginScene();
-
-			m_Shader->Bind();
-			
-			Renderer::Submit(m_VertexArray);
-
-			Renderer::EndScene();
+			Renderer::BeginScene(m_Camera);
+			Renderer::Submit(m_Shader, m_VertexArray);
+			Renderer::EndScene(m_Camera);
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

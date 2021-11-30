@@ -99,6 +99,18 @@
     <ClCompile Include="src\VEngine\Renderer\RendererCommand.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\VEngine\Renderer\Camera\OrthographicCamera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VEngine\Renderer\Camera\ProjectionCamera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VEngine\Renderer\Camera\Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VEngine\GameMode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\VEngine\Events\ApplicationEvent.h">
@@ -213,6 +225,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Renderer\RendererCommand.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\Camera\OrthographicCamera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\Camera\ProjectionCamera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\Camera\Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\GameMode.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

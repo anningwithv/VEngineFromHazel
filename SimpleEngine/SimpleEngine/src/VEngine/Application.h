@@ -10,6 +10,7 @@
 #include "ImGui/ImGuiLayer.h"
 #include "Renderer/Buffer.h"
 #include "Renderer/VertexArray.h"
+#include "Renderer/Camera/Camera.h"
 
 namespace VEngine 
 {
@@ -40,6 +41,8 @@ namespace VEngine
 		//std::unique_ptr<IndexBuffer> m_IndexBuffer;
 		std::shared_ptr<VertexArray> m_VertexArray;
 		std::shared_ptr<Shader> m_Shader;
+
+		Camera* m_Camera;
 
 	private:
 		static Application* s_Instance;
