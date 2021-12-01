@@ -26,10 +26,14 @@ namespace VEngine
 
 	void Application::Run() 
 	{
+		float time = (float)glfwGetTime();
+		float timestep = time - m_LastFrameTime;
+		m_LastFrameTime = time;
+
 		while (m_IsRunning)
 		{
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 
 			m_Window->OnUpdate();
 		}

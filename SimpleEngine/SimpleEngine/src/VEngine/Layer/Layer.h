@@ -13,7 +13,7 @@ namespace VEngine
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(float deltaTime) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 
@@ -21,6 +21,7 @@ namespace VEngine
 
 	protected:
 		std::string m_DebugName;
+
 	};
 
 }
