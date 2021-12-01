@@ -1,7 +1,7 @@
 #pragma once
 
 #include "VEnginePCH.h"
-#include "../Core.h"
+#include "VEngine/Core/Core.h"
 
 namespace VEngine 
 {

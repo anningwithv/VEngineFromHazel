@@ -1,6 +1,6 @@
 #pragma once
 
-#include "VEngine/Core.h"
+#include "VEngine/Core/Core.h"
 #include "Layer.h"
 
 namespace VEngine

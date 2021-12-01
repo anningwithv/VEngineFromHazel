@@ -111,6 +111,9 @@
     <ClCompile Include="src\VEngine\GameMode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\VEngine\Core\TimeStep.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\VEngine\Events\ApplicationEvent.h">
@@ -126,9 +129,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Application.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\VEngine\Core.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Log.h">
@@ -237,6 +237,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\GameMode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Core\TimeStep.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Core\Core.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,10 +13,10 @@ namespace VEngine
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
-		void OnEvent(Event& e);
+		void OnAttach() override;
+		void OnDetach() override;
+		void OnUpdate(TimeStep timeStep) override;
+		void OnEvent(Event& e) override;
 
 	private:
 		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);

@@ -10,8 +10,6 @@ public:
 	{
 		GameMode::SetGameMode(GameMode::Mode::D2);
 
-		//m_ImGuiLayer = new ImGuiLayer();
-		//PushOverlay(m_ImGuiLayer);
 		m_Camera = VEngine::Camera::Create();
 		
 		float vertices[3 * 7] = {
@@ -74,7 +72,7 @@ public:
 		m_Shader.reset(new VEngine::Shader(vertexSrc, fragmentSrc));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(TimeStep deltaTime) override
 	{
 		if (VEngine::Input::IsKeyPressed(VENGINE_KEY_TAB))
 			VENGINE_TRACE("Tab key is pressed (poll)!");

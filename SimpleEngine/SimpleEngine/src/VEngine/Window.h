@@ -2,7 +2,7 @@
 
 #include "VEnginePCH.h"
 
-#include "Core.h"
+//#include "Core.h"
 #include "Events/Event.h"
 
 namespace VEngine

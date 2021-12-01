@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Core.h"
+#include "Core/Core.h"
 #include "Events/Event.h"
 #include "Platform/Windows/WinWindow.h"
 #include "VEngine/Events/Event.h"
 #include "VEngine/Events/ApplicationEvent.h"
 #include "VEngine/Layer/LayerStack.h"
-#include "Renderer/Shader.h"
+//#include "Renderer/Shader.h"
 #include "ImGui/ImGuiLayer.h"
 
 namespace VEngine 

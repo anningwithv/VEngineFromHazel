@@ -53,7 +53,7 @@ namespace VEngine
 	{
 	}
 
-	void ImGuiLayer::OnUpdate()
+	void ImGuiLayer::OnUpdate(TimeStep deltaTime)
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();

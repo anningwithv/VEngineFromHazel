@@ -27,7 +27,7 @@ namespace VEngine
 	void Application::Run() 
 	{
 		float time = (float)glfwGetTime();
-		float timestep = time - m_LastFrameTime;
+		TimeStep timestep = time - m_LastFrameTime;
 		m_LastFrameTime = time;
 
 		while (m_IsRunning)

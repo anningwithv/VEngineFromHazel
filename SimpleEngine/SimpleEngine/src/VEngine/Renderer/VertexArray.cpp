@@ -1,6 +1,6 @@
 #include "VertexArray.h"
 #include "Renderer.h"
-#include "VEngine/Core.h"
+#include "VEngine/Core/Core.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
 namespace VEngine

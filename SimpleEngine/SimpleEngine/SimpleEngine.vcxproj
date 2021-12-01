@@ -195,6 +195,7 @@
     <ClCompile Include="src\VEngine\Application.cpp" />
     <ClCompile Include="src\VEngine\Log.cpp" />
     <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
+    <ClCompile Include="src\VEngine\Core\TimeStep.cpp" />
     <ClCompile Include="vendor\glad\glad.c" />
     <ClCompile Include="src\VEngine\Renderer\VertexArray.cpp" />
   </ItemGroup>
@@ -231,7 +232,7 @@
     <ClInclude Include="src\VEngine.h" />
     <ClInclude Include="src\VEnginePCH.h" />
     <ClInclude Include="src\VEngine\Application.h" />
-    <ClInclude Include="src\VEngine\Core.h" />
+    <ClInclude Include="src\VEngine\Core\Core.h" />
     <ClInclude Include="src\VEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\VEngine\Events\Event.h" />
     <ClInclude Include="src\VEngine\Events\KeyEvent.h" />
@@ -241,6 +242,7 @@
     <ClInclude Include="src\VEngine\Window.h" />
     <ClInclude Include="src\Platform\Windows\WinWindow.h" />
     <ClInclude Include="src\VEngine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\VEngine\Core\TimeStep.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

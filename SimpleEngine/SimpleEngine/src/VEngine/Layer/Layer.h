@@ -1,7 +1,8 @@
 #pragma once
 
-#include "VEngine/Core.h"
+#include "VEngine/Core/Core.h"
 #include "VEngine/Events/Event.h"
+#include "VEngine/Core/TimeStep.h"
 
 namespace VEngine
 {
@@ -13,7 +14,7 @@ namespace VEngine
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate(float deltaTime) {}
+		virtual void OnUpdate(TimeStep deltaTime) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 
