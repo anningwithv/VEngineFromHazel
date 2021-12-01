@@ -70,7 +70,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(new VEngine::Shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(VEngine::Shader::Create(vertexSrc, fragmentSrc));
 	}
 
 	void OnUpdate(TimeStep deltaTime) override

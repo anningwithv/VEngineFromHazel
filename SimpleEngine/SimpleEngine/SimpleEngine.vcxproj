@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\VEngine\GameMode.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Camera\Camera.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Camera\ProjectionCamera.cpp" />
@@ -175,7 +176,6 @@
     <ClCompile Include="client\GameApplication.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\VEngine\Renderer\Shader.cpp" />
     <ClCompile Include="src\VEngine\Renderer\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\VEngine\ImGui\ImGuiLayer.cpp" />
@@ -196,10 +196,12 @@
     <ClCompile Include="src\VEngine\Log.cpp" />
     <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
     <ClCompile Include="src\VEngine\Core\TimeStep.cpp" />
+    <ClCompile Include="src\VEngine\Renderer\Shader\Shader.cpp" />
     <ClCompile Include="vendor\glad\glad.c" />
     <ClCompile Include="src\VEngine\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\VEngine\GameMode.h" />
     <ClInclude Include="src\VEngine\Renderer\Camera\Camera.h" />
     <ClInclude Include="src\VEngine\Renderer\Camera\ProjectionCamera.h" />
@@ -211,7 +213,7 @@
     <ClInclude Include="src\VEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\VEngine\Renderer\Renderer.h" />
-    <ClInclude Include="src\VEngine\Renderer\Shader.h" />
+    <ClInclude Include="src\VEngine\Renderer\Shader\Shader.h" />
     <ClInclude Include="src\VEngine\Renderer\GraphicContext.h" />
     <ClInclude Include="src\VEngine\Renderer\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />

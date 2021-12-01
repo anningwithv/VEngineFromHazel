@@ -10,7 +10,7 @@
 //#include "VEngine/Events/Event.h"
 #include "VEngine/Events/ApplicationEvent.h"
 #include "VEngine/Layer/LayerStack.h"
-#include "VEngine/Renderer/Shader.h"
+#include "VEngine/Renderer/Shader/Shader.h"
 #include "VEngine/ImGui/ImGuiLayer.h"
 #include "VEngine/Renderer/Buffer.h"
 #include "VEngine/Renderer/VertexArray.h"

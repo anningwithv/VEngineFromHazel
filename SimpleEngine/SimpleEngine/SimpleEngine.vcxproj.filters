@@ -72,9 +72,6 @@
     <ClCompile Include="src\VEngine\Renderer\OpenGLContext.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\VEngine\Renderer\Shader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -112,6 +109,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\VEngine\Core\TimeStep.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VEngine\Renderer\Shader\Shader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -200,9 +203,6 @@
     <ClInclude Include="src\VEngine\Renderer\GraphicContext.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VEngine\Renderer\Shader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -243,6 +243,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Core\Core.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\Shader\Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
