@@ -8,9 +8,9 @@
 #include "VEngine/Layer/LayerStack.h"
 #include "Renderer/Shader.h"
 #include "ImGui/ImGuiLayer.h"
-#include "Renderer/Buffer.h"
-#include "Renderer/VertexArray.h"
-#include "Renderer/Camera/Camera.h"
+//#include "Renderer/Buffer.h"
+//#include "Renderer/VertexArray.h"
+//#include "Renderer/Camera/Camera.h"
 
 namespace VEngine 
 {
@@ -36,13 +36,11 @@ namespace VEngine
 
 		LayerStack m_LayerStack;
 
-		unsigned int VAO, VBO, EBO;
-		//std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		//std::unique_ptr<IndexBuffer> m_IndexBuffer;
-		std::shared_ptr<VertexArray> m_VertexArray;
-		std::shared_ptr<Shader> m_Shader;
+		//unsigned int VAO, VBO, EBO;
+		//std::shared_ptr<VertexArray> m_VertexArray;
+		//std::shared_ptr<Shader> m_Shader;
 
-		Camera* m_Camera;
+		//Camera* m_Camera;
 
 	private:
 		static Application* s_Instance;
