@@ -20,6 +20,7 @@ namespace VEngine
 
 	private:
 		unsigned int m_RendererID;
+		unsigned int m_VertexBufferIndexOffset = 0;
 		std::vector<std::shared_ptr<VertexBuffer>> m_VertexBuffers;
 		std::shared_ptr<IndexBuffer> m_IndexBuffer;
 	};

@@ -68,14 +68,15 @@ namespace VEngine
 			//第三个参数指定数据的类型，这里是GL_FLOAT(GLSL中vec*都是由浮点数值组成的)。
 			//第四个参数定义我们是否希望数据被标准化(Normalize)
 			//第五个参数叫做步长(Stride)，它告诉我们在连续的顶点属性组之间的间隔。
-			glVertexAttribPointer(index, element.GetComponentCount(), ShaderDataTypeToOpenGLBaseType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, vertexBuffer->GetLayout().GetStride(), (const void*)element.Offset);
+			glVertexAttribPointer(index + m_VertexBufferIndexOffset, element.GetComponentCount(), ShaderDataTypeToOpenGLBaseType(element.Type), element.Normalized ? GL_TRUE : GL_FALSE, vertexBuffer->GetLayout().GetStride(), (const void*)element.Offset);
 			//启用顶点属性,默认是禁止的
-			glEnableVertexAttribArray(index);
+			glEnableVertexAttribArray(index + m_VertexBufferIndexOffset);
 
 			index++;
 		}
 
 		m_VertexBuffers.push_back(vertexBuffer);
+		m_VertexBufferIndexOffset += vertexBuffer->GetLayout().GetElements().size();
 	}
 
 	void VEngine::OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
