@@ -17,10 +17,13 @@ namespace VEngine
 		const glm::mat4& transform)
 	{
 		shader->Bind();
+
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
-
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformInt("u_Texture", 1); //Get texture form slot = 1
+		
 		vertexArray->Bind();
+
 		RendererCommand::DrawIndexed(vertexArray);
 	}
 }

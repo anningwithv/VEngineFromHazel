@@ -163,6 +163,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\VEngine\GameMode.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Camera\Camera.cpp" />
@@ -197,10 +199,13 @@
     <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
     <ClCompile Include="src\VEngine\Core\TimeStep.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Shader\Shader.cpp" />
+    <ClCompile Include="src\VEngine\Renderer\Texture\Texture.cpp" />
     <ClCompile Include="vendor\glad\glad.c" />
     <ClCompile Include="src\VEngine\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\stb_image\stb_image.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\VEngine\GameMode.h" />
     <ClInclude Include="src\VEngine\Renderer\Camera\Camera.h" />
@@ -245,6 +250,7 @@
     <ClInclude Include="src\Platform\Windows\WinWindow.h" />
     <ClInclude Include="src\VEngine\Renderer\VertexArray.h" />
     <ClInclude Include="src\VEngine\Core\TimeStep.h" />
+    <ClInclude Include="src\VEngine\Renderer\Texture\Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

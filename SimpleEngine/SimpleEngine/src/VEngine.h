@@ -1,13 +1,11 @@
 #pragma once
 
 #include "VEngine/Application.h"
-#include "VEngine/Log.h"//增加Log.h头文件
+#include "VEngine/Log.h"
 #include "VEngine/ImGui/ImGuiLayer.h"
 #include "VEngine/Input.h"
 #include "VEngine/KeyCodes.h"
 #include "VEngine/MouseButtonCodes.h"
-//#include "VEngine/Core/Core.h"
-//#include "VEngine/Events/Event.h"
 #include "VEngine/Events/ApplicationEvent.h"
 #include "VEngine/Layer/LayerStack.h"
 #include "VEngine/Renderer/Shader/Shader.h"
@@ -18,3 +16,4 @@
 #include "VEngine/Renderer/Renderer.h"
 #include "VEngine/Renderer/RendererCommand.h"
 #include "VEngine/GameMode.h"
+#include "VEngine/Renderer/Texture/Texture.h"
