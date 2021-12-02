@@ -6,12 +6,24 @@ namespace VEngine
 {
 	Shader * VEngine::Shader::Create(const std::string & vertexSrc, const std::string & fragmentSrc)
 	{
+		//switch (Renderer::GetAPI())
+		//{
+		//case RendererAPI::API::None:
+		//	return nullptr;
+		//case RendererAPI::API::OpenGL:
+		//	return new OpenGLShader(vertexSrc, fragmentSrc);
+		//}
+		return nullptr;
+	}
+
+	Shader * Shader::Create(const std::string & shaderFilePath)
+	{
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return new OpenGLShader(vertexSrc, fragmentSrc);
+			return new OpenGLShader(shaderFilePath);
 		}
 		return nullptr;
 	}

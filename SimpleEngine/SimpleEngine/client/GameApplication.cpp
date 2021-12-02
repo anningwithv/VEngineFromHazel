@@ -39,7 +39,7 @@ public:
 		indexBuffer.reset(VEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(unsigned int)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		std::string vertexSrc = R"(
+		/*std::string vertexSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
@@ -77,9 +77,11 @@ public:
 			{
 				color = v_Color * texture(u_Texture, v_TexCoord);
 			}
-		)";
+		)";*/
 
-		m_Shader.reset(VEngine::Shader::Create(vertexSrc, fragmentSrc));
+		//m_Shader.reset(VEngine::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader.reset(VEngine::Shader::Create("assets/shaders/Texture.glsl"));
+
 		m_Texture = VEngine::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_BlendTexture = VEngine::Texture2D::Create("assets/textures/Logo.png");
 	}
