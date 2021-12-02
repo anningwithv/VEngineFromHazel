@@ -78,9 +78,9 @@ public:
 				color = v_Color * texture(u_Texture, v_TexCoord);
 			}
 		)";*/
-
+		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
 		//m_Shader.reset(VEngine::Shader::Create(vertexSrc, fragmentSrc));
-		m_Shader.reset(VEngine::Shader::Create("assets/shaders/Texture.glsl"));
+		m_ShaderLibrary->Load("assets/shaders/Texture.glsl");
 
 		m_Texture = VEngine::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_BlendTexture = VEngine::Texture2D::Create("assets/textures/Logo.png");
@@ -91,14 +91,16 @@ public:
 		if (VEngine::Input::IsKeyPressed(VENGINE_KEY_TAB))
 			VENGINE_TRACE("Tab key is pressed (poll)!");
 
+		auto shader = m_ShaderLibrary->Get("Texture");
+
 		RendererCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 		RendererCommand::Clear();
 
 		Renderer::BeginScene(m_Camera);
 		m_Texture->Bind(1);
-		Renderer::Submit(m_Shader, m_VertexArray);
+		Renderer::Submit(shader, m_VertexArray);
 		m_BlendTexture->Bind(1);
-		Renderer::Submit(m_Shader, m_VertexArray);
+		Renderer::Submit(shader, m_VertexArray);
 
 		Renderer::EndScene(m_Camera);
 	}
@@ -116,11 +118,12 @@ public:
 
 private:
 	std::shared_ptr<VEngine::VertexArray> m_VertexArray;
-	std::shared_ptr<VEngine::Shader> m_Shader;
+	//std::shared_ptr<VEngine::Shader> m_Shader;
 
 	VEngine::Camera* m_Camera;
 	Ref<Texture2D> m_Texture;
 	Ref<Texture2D> m_BlendTexture;
+	Ref<ShaderLibrary> m_ShaderLibrary;
 };
 
 class GameApplication : public VEngine::Application

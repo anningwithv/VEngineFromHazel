@@ -3,19 +3,20 @@
 #include "VEngine/Renderer/Shader/Shader.h"
 #include <glad/glad.h>
 #include <glm/glm.hpp>
-#include <map>
+#include <unordered_map>
 
 namespace VEngine
 {
 	class OpenGLShader : public Shader
 	{
 	public:
-		//OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
 		OpenGLShader(const std::string& filePath);
 		virtual ~OpenGLShader() override;
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
+		virtual const std::string& GetName() const override { return m_Name; };
 
 		void UploadUniformInt(const std::string& name, const int value);
 		void UploadUniformFloat(const std::string& name, const float value);
@@ -27,10 +28,11 @@ namespace VEngine
 
 	private:
 		std::string ReadFile(const std::string& filePath);
-		std::map<GLenum, std::string> PreProcess(const std::string& source);
-		void Compile(const std::map<GLenum, std::string>& shaderSources);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+		void Compile(const std::unordered_map<GLenum, std::string>& shaderSources);
 
 	private:
 		uint32_t m_RendererID;
+		std::string m_Name;
 	};
 }
