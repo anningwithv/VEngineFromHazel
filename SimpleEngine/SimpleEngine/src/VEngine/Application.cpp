@@ -3,7 +3,7 @@
 #include "Log.h"
 #include "Input.h"
 //#include "Platform/OpenGL/OpenGLVertexArray.h"
-//#include "VEngine/Renderer/Renderer.h"
+#include "VEngine/Renderer/Renderer.h"
 //#include "GameMode.h"
 
 namespace VEngine 
@@ -18,6 +18,8 @@ namespace VEngine
 
 		m_Window = std::unique_ptr<WinWindow>( WinWindow::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+		Renderer::Init();
 	}
 
 	Application::~Application() {

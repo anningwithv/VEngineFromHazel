@@ -81,6 +81,7 @@ public:
 
 		m_Shader.reset(VEngine::Shader::Create(vertexSrc, fragmentSrc));
 		m_Texture = VEngine::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_BlendTexture = VEngine::Texture2D::Create("assets/textures/Logo.png");
 	}
 
 	void OnUpdate(TimeStep deltaTime) override
@@ -94,6 +95,9 @@ public:
 		Renderer::BeginScene(m_Camera);
 		m_Texture->Bind(1);
 		Renderer::Submit(m_Shader, m_VertexArray);
+		m_BlendTexture->Bind(1);
+		Renderer::Submit(m_Shader, m_VertexArray);
+
 		Renderer::EndScene(m_Camera);
 	}
 
@@ -114,6 +118,7 @@ private:
 
 	VEngine::Camera* m_Camera;
 	Ref<Texture2D> m_Texture;
+	Ref<Texture2D> m_BlendTexture;
 };
 
 class GameApplication : public VEngine::Application
