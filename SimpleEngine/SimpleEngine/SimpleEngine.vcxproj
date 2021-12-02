@@ -167,6 +167,7 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\VEngine\GameMode.cpp" />
+    <ClCompile Include="src\VEngine\OrthographicCameraController.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Camera\Camera.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Camera\ProjectionCamera.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Camera\OrthographicCamera.cpp" />
@@ -208,6 +209,7 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\VEngine\GameMode.h" />
+    <ClInclude Include="src\VEngine\OrthographicCameraController.h" />
     <ClInclude Include="src\VEngine\Renderer\Camera\Camera.h" />
     <ClInclude Include="src\VEngine\Renderer\Camera\ProjectionCamera.h" />
     <ClInclude Include="src\VEngine\Renderer\Camera\OrthographicCamera.h" />

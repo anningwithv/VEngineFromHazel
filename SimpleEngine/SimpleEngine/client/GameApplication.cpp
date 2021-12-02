@@ -10,7 +10,7 @@ public:
 	{
 		GameMode::SetGameMode(GameMode::Mode::D2);
 
-		m_Camera = VEngine::Camera::Create();
+		m_Camera.reset(VEngine::Camera::Create());
 		
 		float vertices[3 * 9] = 
 		{
@@ -38,58 +38,19 @@ public:
 		Ref<VEngine::IndexBuffer> indexBuffer;
 		indexBuffer.reset(VEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(unsigned int)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
-
-		/*std::string vertexSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec4 a_Color;
-			layout(location = 2) in vec2 a_TexCoord;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec3 v_Position;
-			out vec4 v_Color;
-			out vec2 v_TexCoord;
-
-			void main()
-			{
-				v_Position = a_Position;
-				v_Color = a_Color;
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
-			}
-		)";
-
-		std::string fragmentSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-
-			in vec3 v_Position;
-			in vec4 v_Color;
-			in vec2 v_TexCoord;
-
-			uniform sampler2D u_Texture;
-
-			void main()
-			{
-				color = v_Color * texture(u_Texture, v_TexCoord);
-			}
-		)";*/
+	
 		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
-		//m_Shader.reset(VEngine::Shader::Create(vertexSrc, fragmentSrc));
 		m_ShaderLibrary->Load("assets/shaders/Texture.glsl");
 
 		m_Texture = VEngine::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_BlendTexture = VEngine::Texture2D::Create("assets/textures/Logo.png");
+
+		m_CameraController = std::make_shared<OrthographicCameraController>(1.0f, false);
 	}
 
 	void OnUpdate(TimeStep deltaTime) override
 	{
-		if (VEngine::Input::IsKeyPressed(VENGINE_KEY_TAB))
-			VENGINE_TRACE("Tab key is pressed (poll)!");
+		m_CameraController->OnUpdate(deltaTime);
 
 		auto shader = m_ShaderLibrary->Get("Texture");
 
@@ -107,23 +68,17 @@ public:
 
 	void OnEvent(VEngine::Event& event) override
 	{
-		if (event.GetEventType() == VEngine::EventType::KeyPressed)
-		{
-			VEngine::KeyPressedEvent& e = (VEngine::KeyPressedEvent&)event;
-			if (e.GetKeyCode() == VENGINE_KEY_TAB)
-				VENGINE_TRACE("Tab key is pressed (event)!");
-			VENGINE_TRACE("{0}", (char)e.GetKeyCode());
-		}
+		m_CameraController->OnEvent(event);
 	}
 
 private:
-	std::shared_ptr<VEngine::VertexArray> m_VertexArray;
-	//std::shared_ptr<VEngine::Shader> m_Shader;
+	Ref<VEngine::VertexArray> m_VertexArray;
 
-	VEngine::Camera* m_Camera;
+	Ref<Camera> m_Camera;
 	Ref<Texture2D> m_Texture;
 	Ref<Texture2D> m_BlendTexture;
 	Ref<ShaderLibrary> m_ShaderLibrary;
+	Ref<OrthographicCameraController> m_CameraController;
 };
 
 class GameApplication : public VEngine::Application
