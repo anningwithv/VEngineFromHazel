@@ -60,9 +60,9 @@ public:
 
 		Renderer::BeginScene(m_CameraController->GetCamera());
 		m_Texture->Bind(1);
-		Renderer::Submit(shader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Renderer::Submit(shader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(0.1f)));
 		m_BlendTexture->Bind(1);
-		Renderer::Submit(shader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Renderer::Submit(shader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(0.1f)));
 
 		Renderer::EndScene(m_CameraController->GetCamera());
 	}

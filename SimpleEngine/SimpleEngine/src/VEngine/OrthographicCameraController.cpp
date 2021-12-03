@@ -30,7 +30,7 @@ namespace VEngine
 			if (Input::IsKeyPressed(VENGINE_KEY_E))
 				m_CameraRotation -= m_CameraRotationSpeed * ts;
 
-			m_Camera.SetRotation(m_CameraRotation);
+			m_Camera.SetRotation(glm::vec3(0,0,m_CameraRotation));
 		}
 
 		VENGINE_CORE_INFO("Camera position is: x:{0} y:{1} z:{2}", m_CameraPosition.x, m_CameraPosition.y, m_CameraPosition.z);
