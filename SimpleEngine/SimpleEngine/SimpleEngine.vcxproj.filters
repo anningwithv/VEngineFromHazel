@@ -126,7 +126,16 @@
     <ClCompile Include="include\stb_image\stb_image.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\VEngine\OrthographicCameraController.cpp">
+    <ClCompile Include="src\VEngine\CameraController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VEngine\Renderer\Model\Mesh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VEngine\Renderer\Model\Model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VEngine\Renderer\Material\Material.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -272,7 +281,16 @@
     <ClInclude Include="include\stb_image\stb_image.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VEngine\OrthographicCameraController.h">
+    <ClInclude Include="src\VEngine\CameraController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\Model\Mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\Model\Model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\Material\Material.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

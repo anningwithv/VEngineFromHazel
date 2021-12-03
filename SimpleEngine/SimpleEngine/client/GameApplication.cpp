@@ -7,62 +7,25 @@ using namespace VEngine;
 class ExampleLayer : public VEngine::Layer
 {
 public:
-	ExampleLayer()
-		: Layer("Example")
+	ExampleLayer(): Layer("Example")
 	{
 		GameMode::SetGameMode(GameMode::Mode::D2);
 
-		float vertices[9 * 4] = 
-		{
-			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 0.0f, 0.0f,
-			 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f, 1.0f, 0.0f,
-			 0.5f,  0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 1.0f, 1.0f,
-			 -0.5f,  0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 0.0f, 1.0f,
-		};
+		m_Mesh = std::make_shared<Mesh>();
 
-		m_VertexArray.reset(VEngine::VertexArray::Create());
-
-		Ref<VEngine::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(VEngine::VertexBuffer::Create(vertices, sizeof(vertices)));
-		VEngine::BufferLayout layout = 
-		{
-			{VEngine::ShaderDataType::Float3, "a_Position"},
-			{VEngine::ShaderDataType::Float4, "a_Color"},
-			{VEngine::ShaderDataType::Float2, "a_TexCoord"},
-		};
-
-		vertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(vertexBuffer);
-
-		//创建索引缓冲对象EBO,它专门储存索引，OpenGL调用这些顶点的索引来决定该绘制哪个顶点
-		unsigned int indices[6] = { 0, 1, 2, 0, 2, 3 };
-		Ref<VEngine::IndexBuffer> indexBuffer;
-		indexBuffer.reset(VEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(unsigned int)));
-		m_VertexArray->SetIndexBuffer(indexBuffer);
-	
-		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
-		m_ShaderLibrary->Load("assets/shaders/Texture.glsl");
-
-		m_Texture = VEngine::Texture2D::Create("assets/textures/Checkerboard.png");
-		m_BlendTexture = VEngine::Texture2D::Create("assets/textures/Logo.png");
-
-		m_CameraController = std::make_shared<OrthographicCameraController>(1.0f, false);
+		m_CameraController = std::make_shared<CameraController>(Camera::Create(), 1.0f, false);
 	}
 
 	void OnUpdate(TimeStep deltaTime) override
 	{
 		m_CameraController->OnUpdate(deltaTime);
 
-		auto shader = m_ShaderLibrary->Get("Texture");
-
 		RendererCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 		RendererCommand::Clear();
 
 		Renderer::BeginScene(m_CameraController->GetCamera());
-		m_Texture->Bind(1);
-		Renderer::Submit(shader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(0.1f)));
-		m_BlendTexture->Bind(1);
-		Renderer::Submit(shader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(0.1f)));
+
+		m_Mesh->Draw();
 
 		Renderer::EndScene(m_CameraController->GetCamera());
 	}
@@ -78,7 +41,9 @@ private:
 	Ref<Texture2D> m_Texture;
 	Ref<Texture2D> m_BlendTexture;
 	Ref<ShaderLibrary> m_ShaderLibrary;
-	Ref<OrthographicCameraController> m_CameraController;
+	Ref<Mesh> m_Mesh;
+
+	Ref<CameraController> m_CameraController;
 };
 
 class GameApplication : public VEngine::Application

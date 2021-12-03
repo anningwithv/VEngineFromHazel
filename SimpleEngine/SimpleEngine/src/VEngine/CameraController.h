@@ -1,29 +1,30 @@
 #pragma once
 
 #include "VEngine/Renderer/Camera/OrthographicCamera.h"
+#include "VEngine/Renderer/Camera/Camera.h"
 #include "VEngine/Core/Timestep.h"
 #include "VEngine/Events/ApplicationEvent.h"
 #include "VEngine/Events/MouseEvent.h"
 
 namespace VEngine {
 
-	class OrthographicCameraController
+	class CameraController
 	{
 	public:
-		OrthographicCameraController(float aspectRatio, bool rotation = false);
+		CameraController(Camera* camera, float aspectRatio, bool rotation = false);
 
 		void OnUpdate(TimeStep ts);
 		void OnEvent(Event& e);
 
-		OrthographicCamera& GetCamera() { return m_Camera; }
-		const OrthographicCamera& GetCamera() const { return m_Camera; }
+		Camera* GetCamera() { return m_Camera; }
+		const Camera* GetCamera() const { return m_Camera; }
 	private:
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool OnWindowResized(WindowResizeEvent& e);
 	private:
 		float m_AspectRatio;
 		float m_ZoomLevel = 1.0f;
-		OrthographicCamera m_Camera;
+		Camera* m_Camera;
 
 		bool m_Rotation;
 
