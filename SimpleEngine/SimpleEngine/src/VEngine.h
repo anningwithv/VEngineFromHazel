@@ -19,3 +19,4 @@
 #include "VEngine/Renderer/Texture/Texture.h"
 #include "VEngine/CameraController.h"
 #include "VEngine/Renderer/Model/Mesh.h"
+#include "VEngine/Renderer/Model/Model.h"

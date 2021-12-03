@@ -9,6 +9,7 @@
 #include "VEngine/Renderer/VertexArray.h"
 #include "VEngine/Renderer/Shader/Shader.h"
 #include "VEngine/Renderer/Texture/Texture.h"
+#include "VEngine/Core/TimeStep.h"
 
 namespace VEngine
 {
@@ -36,11 +37,12 @@ namespace VEngine
 		Mesh(/*float vertices[]*/);
 
 		void SetupMesh(/*float vertices[]*/);
-		void Draw();
+		void Draw(TimeStep ts);
 
 	private:
 		Ref<VertexArray> m_VertexArray;
 		Ref<ShaderLibrary> m_ShaderLibrary; 
 		Ref<Texture2D> m_Texture;
+		float m_Time;
 	};
 }

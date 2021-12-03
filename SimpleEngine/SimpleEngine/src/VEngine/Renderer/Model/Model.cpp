@@ -3,11 +3,11 @@
 
 namespace VEngine
 {
-	Model::Model(Camera* camera, glm::mat4 projMat, glm::vec3 pos, glm::vec3 scale, const char* vertShader, const char* fragShader)
+	Model::Model(glm::vec3 pos, glm::vec3 scale)
 	{
-		m_Camera = camera;
-
 		m_Mesh = new Mesh({});
+
+		SetPosition(pos);
 		//m_Material = new Material(camera, projMat, pos, scale, vertShader, fragShader);
 
 		//m_DiffuseTexture = new Texture("Image/wall.jpg");
@@ -15,10 +15,15 @@ namespace VEngine
 
 	}
 
-	void Model::Draw()
+	void Model::Draw(TimeStep ts)
 	{
 		//m_Material->Draw();
 
-		m_Mesh->Draw();
+		m_Mesh->Draw(ts);
+	}
+
+	void Model::SetPosition(glm::vec3 position)
+	{
+		m_Transform = glm::translate(glm::mat4(1.0f), position);
 	}
 }

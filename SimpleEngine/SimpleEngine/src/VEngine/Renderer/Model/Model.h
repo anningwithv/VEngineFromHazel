@@ -11,15 +11,17 @@ namespace VEngine
 	{
 	public:
 
-		Model(Camera* camera, glm::mat4 projMat, glm::vec3 pos, glm::vec3 scale, const char* vertShader, const char* fragShader);
+		Model(glm::vec3 pos, glm::vec3 scale);
 
-		void Draw();
+		void Draw(TimeStep ts);
+		void SetPosition(glm::vec3 position);
 
 	private:
-		Camera* m_Camera;
 		Mesh* m_Mesh;
 		//Material* m_Material;
 		Texture* m_DiffuseTexture;
 		Texture* m_SpecularTexture;
+
+		glm::mat4 m_Transform;
 	};
 }

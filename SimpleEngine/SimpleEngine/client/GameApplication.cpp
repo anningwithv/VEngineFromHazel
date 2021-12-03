@@ -9,9 +9,10 @@ class ExampleLayer : public VEngine::Layer
 public:
 	ExampleLayer(): Layer("Example")
 	{
-		GameMode::SetGameMode(GameMode::Mode::D2);
+		GameMode::SetGameMode(GameMode::Mode::D3);
 
-		m_Mesh = std::make_shared<Mesh>();
+		m_Model = std::make_shared<Model>(glm::vec3(1.0f, 0.0f, 1.0f), glm::vec3(1.0f, 30.0f, 1.0f));
+		//m_Mesh = std::make_shared<Mesh>();
 
 		m_CameraController = std::make_shared<CameraController>(Camera::Create(), 1.0f, false);
 	}
@@ -25,7 +26,7 @@ public:
 
 		Renderer::BeginScene(m_CameraController->GetCamera());
 
-		m_Mesh->Draw();
+		m_Model->Draw(deltaTime);
 
 		Renderer::EndScene(m_CameraController->GetCamera());
 	}
@@ -41,7 +42,8 @@ private:
 	Ref<Texture2D> m_Texture;
 	Ref<Texture2D> m_BlendTexture;
 	Ref<ShaderLibrary> m_ShaderLibrary;
-	Ref<Mesh> m_Mesh;
+	//Ref<Mesh> m_Mesh;
+	Ref<Model> m_Model;
 
 	Ref<CameraController> m_CameraController;
 };
