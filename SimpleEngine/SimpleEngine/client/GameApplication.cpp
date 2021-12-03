@@ -1,4 +1,6 @@
 #include "VEngine.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 using namespace VEngine;
 
@@ -10,13 +12,12 @@ public:
 	{
 		GameMode::SetGameMode(GameMode::Mode::D2);
 
-		m_Camera.reset(VEngine::Camera::Create());
-		
-		float vertices[3 * 9] = 
+		float vertices[9 * 4] = 
 		{
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 0.0f, 0.0f,
 			 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f, 1.0f, 0.0f,
-			 0.0f,  0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 0.0f, 1.0f,
+			 0.5f,  0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 1.0f, 1.0f,
+			 -0.5f,  0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 0.0f, 1.0f,
 		};
 
 		m_VertexArray.reset(VEngine::VertexArray::Create());
@@ -34,7 +35,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		//创建索引缓冲对象EBO,它专门储存索引，OpenGL调用这些顶点的索引来决定该绘制哪个顶点
-		unsigned int indices[3] = { 0, 1, 2 };
+		unsigned int indices[6] = { 0, 1, 2, 0, 2, 3 };
 		Ref<VEngine::IndexBuffer> indexBuffer;
 		indexBuffer.reset(VEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(unsigned int)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
@@ -57,13 +58,13 @@ public:
 		RendererCommand::SetClearColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 		RendererCommand::Clear();
 
-		Renderer::BeginScene(m_Camera);
+		Renderer::BeginScene(m_CameraController->GetCamera());
 		m_Texture->Bind(1);
-		Renderer::Submit(shader, m_VertexArray);
+		Renderer::Submit(shader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_BlendTexture->Bind(1);
-		Renderer::Submit(shader, m_VertexArray);
+		Renderer::Submit(shader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
-		Renderer::EndScene(m_Camera);
+		Renderer::EndScene(m_CameraController->GetCamera());
 	}
 
 	void OnEvent(VEngine::Event& event) override
@@ -74,7 +75,6 @@ public:
 private:
 	Ref<VEngine::VertexArray> m_VertexArray;
 
-	Ref<Camera> m_Camera;
 	Ref<Texture2D> m_Texture;
 	Ref<Texture2D> m_BlendTexture;
 	Ref<ShaderLibrary> m_ShaderLibrary;

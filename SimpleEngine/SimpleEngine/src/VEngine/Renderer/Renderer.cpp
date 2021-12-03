@@ -10,12 +10,12 @@ namespace VEngine
 		RendererCommand::Init();
 	}
 
-	void Renderer::BeginScene(Ref<Camera> camera)
+	void Renderer::BeginScene(Camera& camera)
 	{
-		s_SceneData->ViewProjectionMatrix = camera->GetViewProjectionMatrix();
+		s_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
 
-	void Renderer::EndScene(Ref<Camera> camera)
+	void Renderer::EndScene(Camera&  camera)
 	{
 	}
 

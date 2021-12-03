@@ -2,6 +2,7 @@
 
 #include "VEngine/Input.h"
 #include "VEngine/KeyCodes.h"
+#include "VEngine/Log.h"
 
 namespace VEngine
 {
@@ -32,8 +33,10 @@ namespace VEngine
 			m_Camera.SetRotation(m_CameraRotation);
 		}
 
+		VENGINE_CORE_INFO("Camera position is: x:{0} y:{1} z:{2}", m_CameraPosition.x, m_CameraPosition.y, m_CameraPosition.z);
+		VENGINE_CORE_INFO("Camera rotation is: {0}", m_CameraRotation);
+
 		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.RecalculateViewMatrix();
 
 		m_CameraTranslationSpeed = m_ZoomLevel;
 	}
