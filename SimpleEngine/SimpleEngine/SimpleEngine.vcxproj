@@ -163,7 +163,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\VEngine\Renderer\Light\DirectionalLight.cpp" />
     <ClCompile Include="include\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\VEngine\Renderer\Light\Light.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\VEngine\GameMode.cpp" />
@@ -208,7 +210,9 @@
     <ClCompile Include="src\VEngine\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\VEngine\Renderer\Light\DirectionalLight.h" />
     <ClInclude Include="include\stb_image\stb_image.h" />
+    <ClInclude Include="src\VEngine\Renderer\Light\Light.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\VEngine\GameMode.h" />
