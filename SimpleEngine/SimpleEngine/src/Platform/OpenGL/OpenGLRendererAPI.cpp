@@ -10,6 +10,7 @@ namespace VEngine
 		//FinalColor = ScrColor*SrcAlpha + DstColor*(1-SrcAlpha)
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		//Other options:GL_ZERO GL_ONE GL_DST_ALPHA GL_ONE_MINUS_SRC_ALPHA GL_ONE_MINUS_DST_ALPHA etc...
+		//glEnable(GL_CULL_FACE);
 	}
 
 	void VEngine::OpenGLRendererAPI::SetClearColor(const glm::vec4 & color)
@@ -25,5 +26,10 @@ namespace VEngine
 	void VEngine::OpenGLRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
 	{
 		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
+	}
+
+	void VEngine::OpenGLRendererAPI::DrawArray(const std::shared_ptr<VertexArray>& vertexArray, int count)
+	{
+		glDrawArrays(GL_TRIANGLES, 0, count);
 	}
 }

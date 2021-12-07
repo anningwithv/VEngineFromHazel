@@ -28,6 +28,10 @@ namespace VEngine
 			s_RendererAPI->DrawIndexed(vertexArray);
 		}
 
+		inline static void DrawArray(const std::shared_ptr<VertexArray>& vertexArray, int count)
+		{
+			s_RendererAPI->DrawArray(vertexArray, count);
+		}
 	private:
 		static RendererAPI* s_RendererAPI;
 	};
