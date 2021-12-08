@@ -10,11 +10,12 @@ namespace VEngine
 	class Material
 	{
 	public:
-		Material(const std::string& shaderName);
+		Material(const std::string& shaderName, const std::string& textureName);
 		void Draw(glm::mat4& transform);
 
 	private:
 		std::string m_ShaderName;
 		Ref<ShaderLibrary> m_ShaderLibrary;
+		Ref<Texture2D> m_Texture;
 	};
 }

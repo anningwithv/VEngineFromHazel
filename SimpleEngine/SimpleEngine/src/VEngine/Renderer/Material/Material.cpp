@@ -4,12 +4,14 @@
 
 namespace VEngine
 {
-	Material::Material(const std::string& shaderName)
+	Material::Material(const std::string& shaderName, const std::string& textureName)
 	{
 		m_ShaderName = shaderName;
 
 		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
 		m_ShaderLibrary->Load("assets/shaders/" + shaderName + ".glsl");
+
+		m_Texture = VEngine::Texture2D::Create("assets/textures/" + textureName);
 	}
 
 	void Material::Draw(glm::mat4& transform)
@@ -23,5 +25,7 @@ namespace VEngine
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat4("u_LightColor", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat("u_AmbientStrength", 1.5f);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("u_LightPos", glm::vec3(1.0f, 1.0f, 1.0f));
+	
+		m_Texture->Bind(1);
 	}
 }

@@ -7,7 +7,7 @@ namespace VEngine
 	{
 		m_ShaderName = shaderName;
 
-		Ref<Material> mat = std::make_shared<Material>(shaderName);
+		Ref<Material> mat = std::make_shared<Material>(shaderName, "Box.jpg");
 
 		m_Mesh = new Mesh(mat);
 

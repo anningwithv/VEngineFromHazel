@@ -90,7 +90,7 @@ namespace VEngine
 		//m_ShaderLibrary->Load("assets/shaders/Standard.glsl");
 
 		//m_Texture = VEngine::Texture2D::Create("assets/textures/Checkerboard.png");
-		m_Texture = VEngine::Texture2D::Create("assets/textures/Box.jpg");
+		//m_Texture = VEngine::Texture2D::Create("assets/textures/Box.jpg");
 	}
 
 	void Mesh::Draw(TimeStep ts)
@@ -100,7 +100,7 @@ namespace VEngine
 
 		m_Material->Draw(transform);
 
-		m_Texture->Bind(1);
+		//m_Texture->Bind(1);
 
 		Renderer::Submit( m_VertexArray, transform);
 	}

@@ -44,7 +44,7 @@ namespace VEngine
 		Ref<Material> m_Material;
 		Ref<VertexArray> m_VertexArray;
 		//Ref<ShaderLibrary> m_ShaderLibrary; 
-		Ref<Texture2D> m_Texture;
+		//Ref<Texture2D> m_Texture;
 		float m_Time;
 	};
 }
