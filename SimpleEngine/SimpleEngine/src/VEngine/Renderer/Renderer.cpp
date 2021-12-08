@@ -32,7 +32,7 @@ namespace VEngine
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("u_LightPos", glm::vec3(1.0f, 1.0f, 1.0f));
 		vertexArray->Bind();
 
-		//RendererCommand::DrawIndexed(vertexArray);
-		RendererCommand::DrawArray(vertexArray, 36);
+		RendererCommand::DrawIndexed(vertexArray);
+		//RendererCommand::DrawArray(vertexArray, 36);
 	}
 }

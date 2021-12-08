@@ -6,11 +6,12 @@ namespace VEngine
 	void OpenGLRendererAPI::Init()
 	{
 		//Enable blend
-		glEnable(GL_BLEND);
+		//glEnable(GL_BLEND);
 		//FinalColor = ScrColor*SrcAlpha + DstColor*(1-SrcAlpha)
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		//Other options:GL_ZERO GL_ONE GL_DST_ALPHA GL_ONE_MINUS_SRC_ALPHA GL_ONE_MINUS_DST_ALPHA etc...
 		//glEnable(GL_CULL_FACE);
+		glEnable(GL_DEPTH_TEST);
 	}
 
 	void VEngine::OpenGLRendererAPI::SetClearColor(const glm::vec4 & color)

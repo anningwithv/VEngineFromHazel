@@ -52,7 +52,7 @@ namespace VEngine
 		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
 		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
 		-0.5f,  0.5f,  0.5f,  0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f, 1.0f, 0.0f
+		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f, 1.0f, 0.0f,
 
 		};
 		
@@ -98,7 +98,7 @@ namespace VEngine
 		m_Texture->Bind(1);
 
 		m_Time += ts;
-		glm::mat4 transform = /*glm::rotate(glm::mat4(1.0f), glm::radians(5.0f * m_Time), glm::vec3(1.0, 1.0, 1.0)) * */glm::scale(glm::mat4(1.0f), glm::vec3(1.1f));
+		glm::mat4 transform = glm::rotate(glm::mat4(1.0f), glm::radians(4.0f * m_Time), glm::vec3(0.0, 1.0, 0.0)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.1f));
 		Renderer::Submit(shader, m_VertexArray, transform);
 	}
 }

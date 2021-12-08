@@ -17,11 +17,11 @@ out vec3 v_Position;
 void main()
 {
 	v_TexCoord = a_TexCoord;
-	v_Normal = a_Normal;
-	vec4 worldPos = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+	v_Normal = mat3(transpose(inverse(u_Transform))) * a_Normal;
+	vec4 worldPos = u_Transform * vec4(a_Position, 1.0);
 	v_Position = worldPos.xyz;
 
-	gl_Position = worldPos;
+	gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 }
 
 #type fragment
