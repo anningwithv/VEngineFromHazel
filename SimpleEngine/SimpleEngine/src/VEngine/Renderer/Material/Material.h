@@ -3,19 +3,18 @@
 #include "VEngine/Renderer/Shader/Shader.h"
 #include "VEngine/Renderer/Camera/Camera.h"
 #include "VEngine/Renderer/Texture/Texture.h"
+#include <glm/glm.hpp>
 
 namespace VEngine
 {
 	class Material
 	{
 	public:
-		Material(Camera* camera, glm::mat4 projMat, glm::vec3 pos, glm::vec3 scale, const char* vertShader, const char* fragShader);
-		void Draw();
+		Material(const std::string& shaderName);
+		void Draw(glm::mat4& transform);
 
 	private:
-		Camera* m_Camera;
-		Shader* m_Shader;
-		Texture* m_DiffuseTexture;
-		Texture* m_SpecularTexture;
+		std::string m_ShaderName;
+		Ref<ShaderLibrary> m_ShaderLibrary;
 	};
 }

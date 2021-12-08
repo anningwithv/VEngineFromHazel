@@ -3,16 +3,15 @@
 
 namespace VEngine
 {
-	Model::Model(glm::vec3 pos, glm::vec3 scale)
+	Model::Model(glm::vec3 pos, glm::vec3 scale, const std::string& shaderName)
 	{
-		m_Mesh = new Mesh({});
+		m_ShaderName = shaderName;
+
+		Ref<Material> mat = std::make_shared<Material>(shaderName);
+
+		m_Mesh = new Mesh(mat);
 
 		SetPosition(pos);
-		//m_Material = new Material(camera, projMat, pos, scale, vertShader, fragShader);
-
-		//m_DiffuseTexture = new Texture("Image/wall.jpg");
-		//m_SpecularTexture = new Texture("Image/smile.jpg");
-
 	}
 
 	void Model::Draw(TimeStep ts)

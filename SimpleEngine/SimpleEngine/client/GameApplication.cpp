@@ -11,7 +11,7 @@ public:
 	{
 		GameMode::SetGameMode(GameMode::Mode::D3);
 
-		m_Model = std::make_shared<Model>(glm::vec3(1.0f, 0.0f, 1.0f), glm::vec3(1.0f, 30.0f, 1.0f));
+		m_Model = std::make_shared<Model>(glm::vec3(1.0f, 0.0f, 1.0f), glm::vec3(1.0f, 30.0f, 1.0f),"Standard");
 		//m_Mesh = std::make_shared<Mesh>();
 
 		m_CameraController = std::make_shared<CameraController>(Camera::Create(), 1.0f, false);

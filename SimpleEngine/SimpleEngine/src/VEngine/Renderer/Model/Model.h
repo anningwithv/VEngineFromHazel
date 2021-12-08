@@ -11,7 +11,7 @@ namespace VEngine
 	{
 	public:
 
-		Model(glm::vec3 pos, glm::vec3 scale);
+		Model(glm::vec3 pos, glm::vec3 scale, const std::string& shaderName);
 
 		void Draw(TimeStep ts);
 		void SetPosition(glm::vec3 position);
@@ -23,5 +23,7 @@ namespace VEngine
 		Texture* m_SpecularTexture;
 
 		glm::mat4 m_Transform;
+
+		std::string m_ShaderName;
 	};
 }

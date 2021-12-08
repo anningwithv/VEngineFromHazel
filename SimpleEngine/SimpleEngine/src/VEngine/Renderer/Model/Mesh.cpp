@@ -3,8 +3,10 @@
 
 namespace VEngine
 {
-	Mesh::Mesh(/*float vertices[]*/)
+	Mesh::Mesh(Ref<Material>& material)
 	{
+		m_Material = material;
+
 		SetupMesh();
 	}
 
@@ -84,8 +86,8 @@ namespace VEngine
 		indexBuffer.reset(VEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(unsigned int)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
-		m_ShaderLibrary->Load("assets/shaders/Texture.glsl");
+		//m_ShaderLibrary = std::make_shared<ShaderLibrary>();
+		//m_ShaderLibrary->Load("assets/shaders/Standard.glsl");
 
 		//m_Texture = VEngine::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_Texture = VEngine::Texture2D::Create("assets/textures/Box.jpg");
@@ -93,12 +95,13 @@ namespace VEngine
 
 	void Mesh::Draw(TimeStep ts)
 	{
-		auto shader = m_ShaderLibrary->Get("Texture");
+		m_Time += ts;
+		glm::mat4 transform = glm::rotate(glm::mat4(1.0f), glm::radians(4.0f * m_Time), glm::vec3(0.0, 1.0, 0.0)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.1f));
+
+		m_Material->Draw(transform);
 
 		m_Texture->Bind(1);
 
-		m_Time += ts;
-		glm::mat4 transform = glm::rotate(glm::mat4(1.0f), glm::radians(4.0f * m_Time), glm::vec3(0.0, 1.0, 0.0)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.1f));
-		Renderer::Submit(shader, m_VertexArray, transform);
+		Renderer::Submit( m_VertexArray, transform);
 	}
 }

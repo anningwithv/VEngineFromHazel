@@ -1,59 +1,27 @@
 #include "Material.h"
+#include "Platform/OpenGL/OpenGLShader.h"
+#include "VEngine/Renderer/Renderer.h"
 
 namespace VEngine
 {
-	Material::Material(Camera* camera, glm::mat4 projMat, glm::vec3 pos, glm::vec3 scale, const char* vertShader, const char* fragShader)
+	Material::Material(const std::string& shaderName)
 	{
-		m_Camera = camera;
+		m_ShaderName = shaderName;
 
-		//m_Shader = new Shader(vertShader, fragShader);
-
-		//// 设置shader的Uniform之前需要先调用Use
-		//m_Shader->use();
-
-		//// 设置模型矩阵
-		//glm::mat4 modelMat;
-		//modelMat = glm::translate(modelMat, pos);
-		//modelMat = glm::scale(modelMat, scale);
-		//m_Shader->setMatrix("modelMat", modelMat);
-
-		//// 设置投影矩阵
-		//m_Shader->setMatrix("projMat", projMat);
-
-		//// 设置贴图绑定的寄存器index
-		//m_Shader->setInt("material.diffuse", 0);
-		//m_Shader->setInt("material.specular", 1);
-
-		//// 设置光照
-		//m_Shader->setVec3("lightPos", glm::vec3(2, 2, -1));
-		////m_Shader->setVec3("lightColor", glm::vec3(1, 1, 1));
-		//m_Shader->setVec3("objColor", glm::vec3(1, 1, 1));
-
-		//m_Shader->setVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
-		//m_Shader->setVec3("light.diffuse", glm::vec3(0.6f, 0.6f, 0.6f));
-		//m_Shader->setVec3("light.specular", glm::vec3(1, 1, 1));
-
-		//m_Shader->setVec3("material.ambient", glm::vec3(1));
-		////m_Shader->setVec3("material.diffuse", glm::vec3(1, 0, 0));
-		////m_Shader->setVec3("material.specular", glm::vec3(0, 0, 1));
-		//m_Shader->setFloat("material.shinness", 32);
-
-		//// 贴图
-		//m_DiffuseTexture = new Texture("Image/wall.jpg");
-		//m_SpecularTexture = new Texture("Image/container2_specular.jpg");
-		//// Bind texture
-		//glActiveTexture(GL_TEXTURE0);
-		//glBindTexture(GL_TEXTURE_2D, m_DiffuseTexture->GetTextureID());
-		//glActiveTexture(GL_TEXTURE1);
-		//glBindTexture(GL_TEXTURE_2D, m_SpecularTexture->GetTextureID());
-
+		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
+		m_ShaderLibrary->Load("assets/shaders/" + shaderName + ".glsl");
 	}
 
-	void Material::Draw()
+	void Material::Draw(glm::mat4& transform)
 	{
-		//m_Shader->use();
+		auto shader = m_ShaderLibrary->Get(m_ShaderName);
+		shader->Bind();
 
-		//m_Shader->setVec3("viewPos", m_Camera->GetPosition());
-		//m_Shader->setMatrix("viewMat", m_Camera->GetViewMatrix());
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", Renderer::s_SceneData->ViewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformInt("u_Texture", 1); //Get texture form slot = 1
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat4("u_LightColor", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat("u_AmbientStrength", 1.5f);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("u_LightPos", glm::vec3(1.0f, 1.0f, 1.0f));
 	}
 }
