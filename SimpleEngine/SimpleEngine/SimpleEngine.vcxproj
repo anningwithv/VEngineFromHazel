@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\VEngine\Renderer\Light\PointLight.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Light\DirectionalLight.cpp" />
     <ClCompile Include="include\stb_image\stb_image.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Light\Light.cpp" />
@@ -210,6 +211,7 @@
     <ClCompile Include="src\VEngine\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\VEngine\Renderer\Light\PointLight.h" />
     <ClInclude Include="src\VEngine\Renderer\Light\DirectionalLight.h" />
     <ClInclude Include="include\stb_image\stb_image.h" />
     <ClInclude Include="src\VEngine\Renderer\Light\Light.h" />

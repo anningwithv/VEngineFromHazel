@@ -11,6 +11,7 @@
 #include "VEngine/Renderer/Texture/Texture.h"
 #include "VEngine/Core/TimeStep.h"
 #include "VEngine/Renderer/Material/Material.h"
+class Model;
 
 namespace VEngine
 {
@@ -35,12 +36,13 @@ namespace VEngine
 		//std::vector<unsigned int> indices;
 		//std::vector<Texture> textures;
 
-		Mesh(Ref<Material>& material);
+		Mesh(Model* model, Ref<Material>& material);
 
 		void SetupMesh(/*float vertices[]*/);
 		void Draw(TimeStep ts);
 
 	private:
+		Model* m_Model;
 		Ref<Material> m_Material;
 		Ref<VertexArray> m_VertexArray;
 		//Ref<ShaderLibrary> m_ShaderLibrary; 

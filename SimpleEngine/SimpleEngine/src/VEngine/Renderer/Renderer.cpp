@@ -10,9 +10,11 @@ namespace VEngine
 		RendererCommand::Init();
 	}
 
-	void Renderer::BeginScene(Camera* camera)
+	void Renderer::BeginScene(Camera* camera, const Ref<Light>& light)
 	{
 		s_SceneData->ViewProjectionMatrix = camera->GetViewProjectionMatrix();
+
+		s_SceneData->LightPos = light->GetLightPosition();
 	}
 
 	void Renderer::EndScene(Camera*  camera)

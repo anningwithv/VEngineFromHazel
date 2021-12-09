@@ -11,7 +11,8 @@ namespace VEngine
 		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
 		m_ShaderLibrary->Load("assets/shaders/" + shaderName + ".glsl");
 
-		m_Texture = VEngine::Texture2D::Create("assets/textures/" + textureName);
+		m_DiffuseTexture = VEngine::Texture2D::Create("assets/textures/" + textureName);
+		m_SpecularTexture = VEngine::Texture2D::Create("assets/textures/Box_specular.jpg");
 	}
 
 	void Material::Draw(glm::mat4& transform)
@@ -26,6 +27,6 @@ namespace VEngine
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat("u_AmbientStrength", 1.5f);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("u_LightPos", glm::vec3(1.0f, 1.0f, 1.0f));
 	
-		m_Texture->Bind(1);
+		m_DiffuseTexture->Bind(1);
 	}
 }
