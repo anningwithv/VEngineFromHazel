@@ -37,6 +37,7 @@ uniform sampler2D u_Texture;
 uniform vec4 u_LightColor;
 uniform vec3 u_LightPos;
 uniform float u_AmbientStrength;
+uniform vec3 u_CameraPos;
 
 void main()
 {
@@ -44,5 +45,13 @@ void main()
 	vec3 lightDir = normalize(u_LightPos - v_Position);
 	float diff = max(dot(normal, lightDir), 0.0f);
 	vec4 diffuse = diff * u_LightColor;
-	color = u_AmbientStrength * diffuse * texture(u_Texture, v_TexCoord);
+
+	vec3 viewDir = normalize(u_CameraPos - v_Position);
+	vec3 reflectDir = reflect(-lightDir, normal);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0f), 32);
+	float specularStrength = 1.0f;
+	vec4 specular = specularStrength * spec * u_LightColor;
+
+	//color = /*u_AmbientStrength **/ (diffuse + specular) * texture(u_Texture, v_TexCoord);
+	color = specular;
 }
