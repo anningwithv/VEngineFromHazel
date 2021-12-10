@@ -1,11 +1,9 @@
 #pragma once
 
-//#include "Mesh.h"
+#include "Mesh.h"
 #include "VEngine/Renderer/Shader/Shader.h"
 #include "VEngine/Renderer/Camera/Camera.h"
 #include "VEngine/Renderer/Texture/Texture.h"
-
-class Mesh;
 
 namespace VEngine
 {

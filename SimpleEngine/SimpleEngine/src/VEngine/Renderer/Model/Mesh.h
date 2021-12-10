@@ -11,10 +11,11 @@
 #include "VEngine/Renderer/Texture/Texture.h"
 #include "VEngine/Core/TimeStep.h"
 #include "VEngine/Renderer/Material/Material.h"
-class Model;
 
 namespace VEngine
 {
+	class Model;
+
 	struct Vertex
 	{
 		// position
