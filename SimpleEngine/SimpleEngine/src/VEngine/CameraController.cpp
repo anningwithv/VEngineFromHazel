@@ -12,6 +12,7 @@ namespace VEngine
 		m_Camera = camera;
 		m_CameraPosition = camera->GetPosition();
 		m_CameraRotation = camera->GetRotation();
+
 		//m_Camera(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel), m_Rotation(rotation)
 	}
 
@@ -42,7 +43,7 @@ namespace VEngine
 
 		m_Camera->SetPosition(m_CameraPosition);
 
-		m_CameraTranslationSpeed = m_ZoomLevel;
+		//m_CameraTranslationSpeed = m_ZoomLevel;
 	}
 
 	void CameraController::OnEvent(Event& e)

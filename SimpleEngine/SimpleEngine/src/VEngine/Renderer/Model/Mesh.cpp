@@ -1,10 +1,12 @@
 #include "Mesh.h"
 #include "VEngine/Renderer/Renderer.h"
+#include "Model.h"
 
 namespace VEngine
 {
-	Mesh::Mesh(Ref<Material>& material)
+	Mesh::Mesh(Model* model, Ref<Material>& material)
 	{
+		m_Model = model;
 		m_Material = material;
 
 		SetupMesh();
@@ -58,14 +60,6 @@ namespace VEngine
 
 		};
 		
-		//float vertices[9 * 4] = 
-		//{
-		//	-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 0.0f, 0.0f,
-		//	 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f, 1.0f, 0.0f,
-		//	 0.5f,  0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 1.0f, 1.0f,
-		//	 -0.5f,  0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, 0.0f, 1.0f,
-		//};
-
 		m_VertexArray.reset(VEngine::VertexArray::Create());
 
 		Ref<VEngine::VertexBuffer> vertexBuffer;
@@ -85,18 +79,13 @@ namespace VEngine
 		Ref<VEngine::IndexBuffer> indexBuffer;
 		indexBuffer.reset(VEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(unsigned int)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
-
-		//m_ShaderLibrary = std::make_shared<ShaderLibrary>();
-		//m_ShaderLibrary->Load("assets/shaders/Standard.glsl");
-
-		//m_Texture = VEngine::Texture2D::Create("assets/textures/Checkerboard.png");
-		//m_Texture = VEngine::Texture2D::Create("assets/textures/Box.jpg");
 	}
 
 	void Mesh::Draw(TimeStep ts)
 	{
 		m_Time += ts;
-		glm::mat4 transform = glm::rotate(glm::mat4(1.0f), glm::radians(4.0f /** m_Time*/), glm::vec3(0.0, 1.0, 0.0)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.1f));
+
+		glm::mat4 transform = m_Model->GetTransform();//glm::rotate(glm::mat4(1.0f), glm::radians(45.0f /** m_Time*/), glm::vec3(0.0, 1.0, 0.0)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.1f));
 
 		m_Material->Draw(transform);
 

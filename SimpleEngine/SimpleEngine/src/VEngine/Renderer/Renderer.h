@@ -3,6 +3,7 @@
 #include "RendererCommand.h"
 #include "Camera/Camera.h"
 #include "Shader/Shader.h"
+#include "Light/Light.h"
 
 namespace VEngine
 {
@@ -10,7 +11,7 @@ namespace VEngine
 	{
 	public:
 		static void Init();
-		static void BeginScene(Camera*  camera);
+		static void BeginScene(Camera*  camera, const Ref<Light>& light);
 		static void EndScene(Camera*  camera);
 		static void Submit(/*const std::shared_ptr<Shader>& shader, */const std::shared_ptr<VertexArray>& vertexArray,
 			const glm::mat4& transform = glm::mat4(1.0f));
@@ -22,6 +23,7 @@ namespace VEngine
 		{
 			glm::mat4 ViewProjectionMatrix;
 			glm::vec3 CameraPos;
+			glm::vec3 LightPos;
 		};
 		static SceneData* s_SceneData;
 

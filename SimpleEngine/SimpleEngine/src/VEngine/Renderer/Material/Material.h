@@ -16,6 +16,8 @@ namespace VEngine
 	private:
 		std::string m_ShaderName;
 		Ref<ShaderLibrary> m_ShaderLibrary;
-		Ref<Texture2D> m_Texture;
+
+		Ref<Texture2D> m_DiffuseTexture;
+		Ref<Texture2D> m_SpecularTexture;
 	};
 }
