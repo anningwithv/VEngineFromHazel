@@ -8,7 +8,7 @@ namespace VEngine
 	{
 		m_ShaderName = shaderName;
 
-		m_Material = std::make_shared<Material>(shaderName, "Box.jpg");
+		m_Material = std::make_shared<Material>(shaderName, "Box.jpg", "Box_specular.jpg");
 
 		m_Mesh = new Mesh(this);
 

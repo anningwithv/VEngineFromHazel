@@ -33,15 +33,13 @@ in vec2 v_TexCoord;
 in vec3 v_Normal;
 in vec3 v_Position;
 
-uniform sampler2D u_Texture;
 uniform float u_AmbientStrength;
 uniform vec3 u_CameraPos;
 
 struct Material
 {
-    vec3 ambient;
-    vec3 diffuse;
-    vec3 specular;
+    sampler2D diffuse;
+    sampler2D specular;
     float shininess;
 };
 uniform Material material;
@@ -56,25 +54,25 @@ uniform Light light;
 void main()
 {
     // 环境光
-    vec3 ambient = light.color * material.ambient;
+    //vec3 ambient = light.color * material.ambient;
 
 	// 漫反射光
 	vec3 normal = normalize(v_Normal);
 	vec3 lightDir = normalize(light.position - v_Position);
 	float diff = max(dot(normal, lightDir), 0.0f);
-	vec3 diffuse = (diff * material.diffuse) * light.color;
+	vec3 diffuse = diff * vec3(texture(material.diffuse, v_TexCoord)) * light.color;
 
 	// 镜面高光
 	vec3 viewDir = normalize(u_CameraPos - v_Position);
 	vec3 reflectDir = reflect(-lightDir, normal);
 	float spec = pow(max(dot(viewDir, reflectDir), 0.0f), material.shininess);
-	vec3 specular = (material.specular * spec * 10.0f) * light.color;
+	vec3 specular = (vec3(texture(material.specular, v_TexCoord)) * spec * 10.0f) * light.color;
 
-	vec3 col = (ambient + diffuse + specular);
+	vec3 col = (diffuse + specular);
 	//col = specular;
 	//col = ambient;
 	//col = diffuse;
 	//col = texture(u_Texture, v_TexCoord);
 
-	color = vec4(col, 1.0f) * texture(u_Texture, v_TexCoord);
+	color = vec4(col, 1.0f);
 }
