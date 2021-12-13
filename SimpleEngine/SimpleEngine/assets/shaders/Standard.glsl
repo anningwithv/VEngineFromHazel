@@ -34,25 +34,47 @@ in vec3 v_Normal;
 in vec3 v_Position;
 
 uniform sampler2D u_Texture;
-uniform vec4 u_LightColor;
-uniform vec3 u_LightPos;
 uniform float u_AmbientStrength;
 uniform vec3 u_CameraPos;
 
+struct Material
+{
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+    float shininess;
+};
+uniform Material material;
+
+struct Light
+{
+    vec3 position;
+    vec3 color;
+};
+uniform Light light;
+
 void main()
 {
-	vec3 normal = normalize(v_Normal);
-	vec3 lightDir = normalize(u_LightPos - v_Position);
-	float diff = max(dot(normal, lightDir), 0.0f);
-	vec4 diffuse = diff * u_LightColor;
+    // 环境光
+    vec3 ambient = light.color * material.ambient;
 
+	// 漫反射光
+	vec3 normal = normalize(v_Normal);
+	vec3 lightDir = normalize(light.position - v_Position);
+	float diff = max(dot(normal, lightDir), 0.0f);
+	vec3 diffuse = (diff * material.diffuse) * light.color;
+
+	// 镜面高光
 	vec3 viewDir = normalize(u_CameraPos - v_Position);
 	vec3 reflectDir = reflect(-lightDir, normal);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0f), 32);
-	float specularStrength = 10.0f;
-	vec4 specular = specularStrength * spec * u_LightColor;
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0f), material.shininess);
+	vec3 specular = (material.specular * spec * 10.0f) * light.color;
 
-	color = /*u_AmbientStrength **/ (diffuse + specular) * texture(u_Texture, v_TexCoord);
-	//color = specular;
-	//color = texture(u_Texture, v_TexCoord);
+	vec3 col = (ambient + diffuse + specular);
+	//col = specular;
+	//col = ambient;
+	//col = diffuse;
+	//col = texture(u_Texture, v_TexCoord);
+
+	color = vec4(col, 1.0f) * texture(u_Texture, v_TexCoord);
 }

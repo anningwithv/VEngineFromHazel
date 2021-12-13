@@ -19,6 +19,7 @@ namespace VEngine
 		s_SceneData->ViewProjectionMatrix = camera->GetViewProjectionMatrix();
 
 		s_SceneData->LightPos = light->GetLightPosition();
+		s_SceneData->LightColor = light->GetLightColor();
 	}
 
 	void Renderer::EndScene(Camera*  camera)

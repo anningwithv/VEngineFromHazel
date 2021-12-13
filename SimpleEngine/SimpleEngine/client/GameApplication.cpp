@@ -11,7 +11,7 @@ public:
 	{
 		GameMode::SetGameMode(GameMode::Mode::D3);
 
-		m_Light = std::make_shared<PointLight>(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		m_Light = std::make_shared<PointLight>(glm::vec3(0.6f, 0.5f, 0.5f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 		m_CubeModel = std::make_shared<Model>(glm::vec3(1.0f, 0.0f, -5.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), "Standard");
 		m_LightModel = std::make_shared<Model>(m_Light->GetLightPosition(), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.0f, 0.0f, 0.0f), "Unlit");
