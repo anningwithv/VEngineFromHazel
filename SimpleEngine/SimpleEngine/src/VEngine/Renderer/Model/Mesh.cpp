@@ -4,10 +4,10 @@
 
 namespace VEngine
 {
-	Mesh::Mesh(Model* model, Ref<Material>& material)
+	Mesh::Mesh(Model* model)
 	{
 		m_Model = model;
-		m_Material = material;
+		//m_Material = material;
 
 		SetupMesh();
 	}
@@ -87,7 +87,7 @@ namespace VEngine
 
 		glm::mat4 transform = m_Model->GetTransform();//glm::rotate(glm::mat4(1.0f), glm::radians(45.0f /** m_Time*/), glm::vec3(0.0, 1.0, 0.0)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.1f));
 
-		m_Material->Draw(transform);
+		//m_Material->Draw(transform);
 
 		//m_Texture->Bind(1);
 

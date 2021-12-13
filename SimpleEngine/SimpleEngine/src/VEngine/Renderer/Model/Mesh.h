@@ -37,14 +37,13 @@ namespace VEngine
 		//std::vector<unsigned int> indices;
 		//std::vector<Texture> textures;
 
-		Mesh(Model* model, Ref<Material>& material);
+		Mesh(Model* model);
 
 		void SetupMesh(/*float vertices[]*/);
 		void Draw(TimeStep ts);
 
 	private:
 		Model* m_Model;
-		Ref<Material> m_Material;
 		Ref<VertexArray> m_VertexArray;
 		//Ref<ShaderLibrary> m_ShaderLibrary; 
 		//Ref<Texture2D> m_Texture;

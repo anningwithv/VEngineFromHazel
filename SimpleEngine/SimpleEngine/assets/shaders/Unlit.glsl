@@ -1,4 +1,4 @@
-// Basic Texture Shader
+// Unlit Shader
 
 #type vertex
 #version 330 core
@@ -41,18 +41,6 @@ uniform vec3 u_CameraPos;
 
 void main()
 {
-	vec3 normal = normalize(v_Normal);
-	vec3 lightDir = normalize(u_LightPos - v_Position);
-	float diff = max(dot(normal, lightDir), 0.0f);
-	vec4 diffuse = diff * u_LightColor;
-
-	vec3 viewDir = normalize(u_CameraPos - v_Position);
-	vec3 reflectDir = reflect(-lightDir, normal);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0f), 32);
-	float specularStrength = 10.0f;
-	vec4 specular = specularStrength * spec * u_LightColor;
-
-	color = /*u_AmbientStrength **/ (diffuse + specular) * texture(u_Texture, v_TexCoord);
-	//color = specular;
 	//color = texture(u_Texture, v_TexCoord);
+	color = vec4(1.0f, 1.0f, 1.0f, 1.0f);
 }

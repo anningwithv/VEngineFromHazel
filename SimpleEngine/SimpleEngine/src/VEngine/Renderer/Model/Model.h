@@ -24,6 +24,7 @@ namespace VEngine
 
 	private:
 		Mesh* m_Mesh;
+		Ref<Material> m_Material;
 		//Material* m_Material;
 		Texture* m_DiffuseTexture;
 		Texture* m_SpecularTexture;

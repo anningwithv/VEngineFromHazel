@@ -8,9 +8,9 @@ namespace VEngine
 	{
 		m_ShaderName = shaderName;
 
-		Ref<Material> mat = std::make_shared<Material>(shaderName, "Box.jpg");
+		m_Material = std::make_shared<Material>(shaderName, "Box.jpg");
 
-		m_Mesh = new Mesh(this, mat);
+		m_Mesh = new Mesh(this);
 
 		m_Position = pos;
 		m_Rotation = rotation;
@@ -21,7 +21,7 @@ namespace VEngine
 
 	void Model::Draw(TimeStep ts)
 	{
-		//m_Material->Draw();
+		m_Material->Draw(m_Transform);
 
 		m_Mesh->Draw(ts);
 	}
