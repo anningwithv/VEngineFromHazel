@@ -10,7 +10,8 @@ namespace VEngine
 
 		Ref<Material> mat = std::make_shared<Material>(shaderName, "Box.jpg");
 
-		m_Mesh = new Mesh(this, mat);
+		std::vector<Vertex> vertexs;
+		m_Mesh = new Mesh(this, mat, vertexs);
 
 		m_Position = pos;
 		m_Rotation = rotation;
