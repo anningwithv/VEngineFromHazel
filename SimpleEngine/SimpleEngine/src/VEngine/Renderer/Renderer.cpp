@@ -4,6 +4,7 @@
 namespace VEngine
 {
 	Renderer::SceneData* Renderer::s_SceneData = new Renderer::SceneData;
+	Camera* Renderer::s_Camera;
 
 	void Renderer::Init()
 	{
@@ -12,9 +13,13 @@ namespace VEngine
 
 	void Renderer::BeginScene(Camera* camera, const Ref<Light>& light)
 	{
+		s_Camera = camera;
+
+		s_SceneData->CameraPos = s_Camera->GetPosition();
 		s_SceneData->ViewProjectionMatrix = camera->GetViewProjectionMatrix();
 
 		s_SceneData->LightPos = light->GetLightPosition();
+		s_SceneData->LightColor = light->GetLightColor();
 	}
 
 	void Renderer::EndScene(Camera*  camera)
@@ -24,6 +29,7 @@ namespace VEngine
 	void Renderer::Submit(/*const std::shared_ptr<Shader>& shader,*/ const std::shared_ptr<VertexArray>& vertexArray,
 		const glm::mat4& transform)
 	{
+		s_SceneData->CameraPos = s_Camera->GetPosition();
 		//shader->Bind();
 
 		//std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);

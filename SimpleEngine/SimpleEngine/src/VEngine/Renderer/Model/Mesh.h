@@ -11,10 +11,11 @@
 #include "VEngine/Renderer/Texture/Texture.h"
 #include "VEngine/Core/TimeStep.h"
 #include "VEngine/Renderer/Material/Material.h"
-class Model;
 
 namespace VEngine
 {
+	class Model;
+
 	struct Vertex
 	{
 		// position
@@ -41,14 +42,14 @@ namespace VEngine
 		std::vector<Vertex> vertices;
 		std::vector<unsigned int> indices;
 		std::vector<TextureData> textures;
-		Mesh(Model* model, Ref<Material>& material, std::vector<Vertex> vertices/*, std::vector<GLuint> indices, std::vector<TextureData> textures*/);
+		Mesh(Model* model, std::vector<Vertex> vertices/*, std::vector<GLuint> indices, std::vector<TextureData> textures*/);
+
 
 		void SetupMesh(/*float vertices[]*/);
 		void Draw(TimeStep ts);
 
 	private:
 		Model* m_Model;
-		Ref<Material> m_Material;
 		Ref<VertexArray> m_VertexArray;
 		//Ref<ShaderLibrary> m_ShaderLibrary; 
 		//Ref<Texture2D> m_Texture;

@@ -4,15 +4,15 @@
 
 namespace VEngine
 {
-	Material::Material(const std::string& shaderName, const std::string& textureName)
+	Material::Material(const std::string& shaderName, const std::string& diffuseTex, const std::string& specularTex)
 	{
 		m_ShaderName = shaderName;
 
 		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
 		m_ShaderLibrary->Load("assets/shaders/" + shaderName + ".glsl");
 
-		m_DiffuseTexture = VEngine::Texture2D::Create("assets/textures/" + textureName);
-		m_SpecularTexture = VEngine::Texture2D::Create("assets/textures/Box_specular.jpg");
+		m_DiffuseTexture = VEngine::Texture2D::Create("assets/textures/" + diffuseTex);
+		m_SpecularTexture = VEngine::Texture2D::Create("assets/textures/" + specularTex);
 	}
 
 	void Material::Draw(glm::mat4& transform)
@@ -20,13 +20,24 @@ namespace VEngine
 		auto shader = m_ShaderLibrary->Get(m_ShaderName);
 		shader->Bind();
 
+		m_DiffuseTexture->Bind(1);
+		m_SpecularTexture->Bind(2);
+
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("material.ambient", glm::vec3(1.0f, 1.0f, 1.0f));
+		//std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("material.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+		//std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("material.specular", glm::vec3(0.0f, 1.0f, 1.0f));
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat("material.shininess", 32.0f);
+
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("light.color", Renderer::s_SceneData->LightColor);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("light.position", Renderer::s_SceneData->LightPos);
+
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", Renderer::s_SceneData->ViewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformInt("u_Texture", 1); //Get texture form slot = 1
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat4("u_LightColor", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformInt("material.diffuse", 1); //Get texture form slot = 1
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformInt("material.specular", 2); //Get texture form slot = 2
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat("u_AmbientStrength", 1.5f);
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("u_LightPos", glm::vec3(1.0f, 1.0f, 1.0f));
-	
-		m_DiffuseTexture->Bind(1);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("u_CameraPos", Renderer::s_SceneData->CameraPos);
+
+
 	}
 }

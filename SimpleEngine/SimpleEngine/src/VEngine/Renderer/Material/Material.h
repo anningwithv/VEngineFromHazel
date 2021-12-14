@@ -10,7 +10,7 @@ namespace VEngine
 	class Material
 	{
 	public:
-		Material(const std::string& shaderName, const std::string& textureName);
+		Material(const std::string& shaderName, const std::string& diffuseTex, const std::string& specularTex);
 		void Draw(glm::mat4& transform);
 
 	private:

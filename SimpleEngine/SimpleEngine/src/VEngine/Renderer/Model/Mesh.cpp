@@ -4,19 +4,8 @@
 
 namespace VEngine
 {
-	//Mesh::Mesh(Model* model, Ref<Material>& material, std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<TextureData> textures)
-	//{
-	//	//m_Model = model;
-	//	//m_Material = material;
 
-	//	//this->vertices = vertices;
-	//	//this->indices = indices;
-	//	//this->textures = textures;
-
-	//	//this->SetupMesh();
-	//}
-
-	Mesh::Mesh(Model * model, Ref<Material>& material, std::vector<Vertex> vertices/*, std::vector<GLuint> indices, std::vector<TextureData> textures*/)
+	Mesh::Mesh(Model * model, std::vector<Vertex> vertices/*, std::vector<GLuint> indices, std::vector<TextureData> textures*/)
 	{
 	}
 
@@ -92,9 +81,10 @@ namespace VEngine
 	void Mesh::Draw(TimeStep ts)
 	{
 		m_Time += ts;
+
 		glm::mat4 transform = m_Model->GetTransform();//glm::rotate(glm::mat4(1.0f), glm::radians(45.0f /** m_Time*/), glm::vec3(0.0, 1.0, 0.0)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.1f));
 
-		m_Material->Draw(transform);
+		//m_Material->Draw(transform);
 
 		//m_Texture->Bind(1);
 
