@@ -25,9 +25,13 @@ namespace VEngine
 		// texCoords
 		glm::vec2 uv;
 		// tangent
-		glm::vec3 tangent;
+		//glm::vec3 tangent;
 		// bitangent
-		glm::vec3 bitangent;
+		//glm::vec3 bitangent;
+		Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv):position(position), normal(normal), uv(uv)
+		{
+
+		}
 	};
 
 	struct TextureData
@@ -40,9 +44,9 @@ namespace VEngine
 	{
 	public:
 		std::vector<Vertex> vertices;
-		std::vector<unsigned int> indices;
+		std::vector<GLuint> indices;
 		std::vector<TextureData> textures;
-		Mesh(Model* model, std::vector<Vertex> vertices/*, std::vector<GLuint> indices, std::vector<TextureData> textures*/);
+		Mesh(Model* model, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<TextureData> textures);
 
 
 		void SetupMesh(/*float vertices[]*/);

@@ -5,8 +5,15 @@
 namespace VEngine
 {
 
-	Mesh::Mesh(Model * model, std::vector<Vertex> vertices/*, std::vector<GLuint> indices, std::vector<TextureData> textures*/)
+	Mesh::Mesh(Model * model, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<TextureData> textures)
 	{
+		m_Model = model;
+
+		this->vertices = vertices;
+		this->indices = indices;
+		this->textures = textures;
+
+		SetupMesh();
 	}
 
 	void Mesh::SetupMesh()
