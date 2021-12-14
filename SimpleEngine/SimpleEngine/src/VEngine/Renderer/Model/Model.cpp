@@ -10,7 +10,8 @@ namespace VEngine
 
 		m_Material = std::make_shared<Material>(shaderName, "Box.jpg", "Box_specular.jpg");
 
-		m_Mesh = new Mesh(this);
+		std::vector<Vertex> vertexs;
+		m_Mesh = new Mesh(this, vertexs);
 
 		m_Position = pos;
 		m_Rotation = rotation;

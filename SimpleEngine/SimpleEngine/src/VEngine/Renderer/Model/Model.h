@@ -1,6 +1,11 @@
 #pragma once
 
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 #include "Mesh.h"
+
 #include "VEngine/Renderer/Shader/Shader.h"
 #include "VEngine/Renderer/Camera/Camera.h"
 #include "VEngine/Renderer/Texture/Texture.h"

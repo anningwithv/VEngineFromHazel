@@ -4,12 +4,9 @@
 
 namespace VEngine
 {
-	Mesh::Mesh(Model* model)
-	{
-		m_Model = model;
-		//m_Material = material;
 
-		SetupMesh();
+	Mesh::Mesh(Model * model, std::vector<Vertex> vertices/*, std::vector<GLuint> indices, std::vector<TextureData> textures*/)
+	{
 	}
 
 	void Mesh::SetupMesh()

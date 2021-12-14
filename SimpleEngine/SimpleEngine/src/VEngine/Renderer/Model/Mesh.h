@@ -30,14 +30,20 @@ namespace VEngine
 		glm::vec3 bitangent;
 	};
 
+	struct TextureData
+	{
+		GLuint id;
+		std::string type;
+	};
+
 	class Mesh
 	{
 	public:
-		//std::vector<Vertex> vertices;
-		//std::vector<unsigned int> indices;
-		//std::vector<Texture> textures;
+		std::vector<Vertex> vertices;
+		std::vector<unsigned int> indices;
+		std::vector<TextureData> textures;
+		Mesh(Model* model, std::vector<Vertex> vertices/*, std::vector<GLuint> indices, std::vector<TextureData> textures*/);
 
-		Mesh(Model* model);
 
 		void SetupMesh(/*float vertices[]*/);
 		void Draw(TimeStep ts);
