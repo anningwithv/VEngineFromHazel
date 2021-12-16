@@ -68,7 +68,7 @@ struct PointLight
 
     vec3 color;
 };  
-#define NR_POINT_LIGHTS 4  
+#define NR_POINT_LIGHTS 1  
 uniform PointLight pointLights[NR_POINT_LIGHTS];
 
 vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir)
@@ -130,8 +130,8 @@ void main()
 	vec3 col = (diffuse + specular);
 
 	// 第一步，计算平行光照
-    //vec3 result = CalcDirLight(dirLight, normal, viewDir);
-	vec3 result = vec3(0.0f, 0.0f, 0.0f);
+    vec3 result = CalcDirLight(dirLight, normal, viewDir);
+	//vec3 result = vec3(0.0f, 0.0f, 0.0f);
     // 第二步，计算顶点光照
     for(int i = 0; i < NR_POINT_LIGHTS; i++)
         result += CalcPointLight(pointLights[i], normal, v_Position, viewDir);

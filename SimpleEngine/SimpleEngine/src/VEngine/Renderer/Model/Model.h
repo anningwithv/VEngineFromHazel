@@ -17,7 +17,13 @@ namespace VEngine
 	public:
 
 		Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName);
+		
+		//Model(GLchar* path)
+		//{
+		//	this->loadModel(path);
+		//}
 
+		void Draw(Shader shader);
 		void Draw(TimeStep ts);
 		void SetPosition(glm::vec3 position);
 		void SetRotation(glm::vec3 rotation);

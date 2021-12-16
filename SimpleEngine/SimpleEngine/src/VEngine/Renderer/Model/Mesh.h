@@ -16,21 +16,31 @@ namespace VEngine
 {
 	class Model;
 
-	struct Vertex
+	class Vertex
 	{
-		// position
-		glm::vec3 position;
-		// normal
-		glm::vec3 normal;
-		// texCoords
-		glm::vec2 uv;
-		// tangent
-		//glm::vec3 tangent;
-		// bitangent
-		//glm::vec3 bitangent;
-		Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv):position(position), normal(normal), uv(uv)
-		{
+		//// position
+		//glm::vec3 position;
+		//// normal
+		//glm::vec3 normal;
+		//// texCoords
+		//glm::vec2 uv;
+		//// tangent
+		////glm::vec3 tangent;
+		//// bitangent
+		////glm::vec3 bitangent;
+		//Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv):position(position), normal(normal), uv(uv)
+		//{
+		//}
+	public:
 
+		GLfloat* vertices;
+		int verticesSize;
+		GLuint* indices;
+		int indicesCount;
+
+		Vertex(GLfloat* vertices, int verticesSize, GLuint* indices, int indicesSize) 
+			:vertices(vertices), verticesSize(verticesSize), indices(indices), indicesCount(indicesSize)
+		{
 		}
 	};
 
@@ -43,10 +53,9 @@ namespace VEngine
 	class Mesh
 	{
 	public:
-		std::vector<Vertex> vertices;
-		std::vector<GLuint> indices;
+		Vertex* verticeData;
 		std::vector<TextureData> textures;
-		Mesh(Model* model, std::vector<Vertex> vertices, std::vector<GLuint> indices, std::vector<TextureData> textures);
+		Mesh(Model* model, Vertex* verticeData, std::vector<TextureData> textures);
 
 
 		void SetupMesh(/*float vertices[]*/);
