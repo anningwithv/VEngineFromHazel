@@ -18,12 +18,12 @@ namespace VEngine
 
 		Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName);
 		
-		//Model(GLchar* path)
-		//{
-		//	this->loadModel(path);
-		//}
+		Model(std::string& path)
+		{
+			this->LoadModel(path);
+		}
 
-		void Draw(Shader shader);
+		//void Draw(Shader shader);
 		void Draw(TimeStep ts);
 		void SetPosition(glm::vec3 position);
 		void SetRotation(glm::vec3 rotation);
@@ -47,5 +47,15 @@ namespace VEngine
 		glm::vec3 m_Position;
 		glm::vec3 m_Rotation;
 		glm::vec3 m_Scale;
+
+		/*  模型数据  */
+		std::vector<Mesh> meshes;
+		std::string directory;
+
+		/*  私有成员函数   */
+		void LoadModel(std::string& path);
+		void ProcessNode(aiNode* node, const aiScene* scene);
+		Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene);
+		std::vector<Texture> LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string& typeName);
 	};
 }
