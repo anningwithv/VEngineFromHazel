@@ -21,6 +21,7 @@
 #include "VEngine/Renderer/Model/Mesh.h"
 #include "VEngine/Renderer/Model/Model.h"
 #include "VEngine/Renderer/Model/CubeModel.h"
+#include "VEngine/Renderer/Model/SkyboxModel.h"
 #include "VEngine/Renderer/Light/Light.h"
 #include "VEngine/Renderer/Light/DirectionalLight.h"
 #include "VEngine/Renderer/Light/PointLight.h"

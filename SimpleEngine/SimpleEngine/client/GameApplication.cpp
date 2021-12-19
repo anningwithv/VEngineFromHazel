@@ -15,7 +15,8 @@ public:
 
 		m_CubeModel = std::make_shared<Model>(glm::vec3(1.0f, 0.0f, -5.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), "Standard", "assets/objects/backpack/backpack.obj", "assets/objects/backpack/diffuse.jpg", "assets/objects/backpack/specular.jpg");
 		m_LightModel = std::make_shared<CubeModel>(m_Light->GetLightPosition(), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.0f, 0.0f, 0.0f), "Unlit", "assets/textures/Box.jpg", "assets/textures/Box_specular.jpg");
-
+		m_Skybox = std::make_shared<SkyboxModel>(m_Light->GetLightPosition(), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.0f, 0.0f, 0.0f), "Skybox", "assets/textures/Box.jpg", "assets/textures/Box_specular.jpg");
+		
 		m_CameraController = std::make_shared<CameraController>(Camera::Create(), 1.0f, false);
 	}
 
@@ -30,6 +31,7 @@ public:
 
 		m_CubeModel->Draw(deltaTime);
 		m_LightModel->Draw(deltaTime);
+		m_Skybox->Draw(deltaTime);
 
 		Renderer::EndScene(m_CameraController->GetCamera());
 	}
@@ -48,6 +50,7 @@ private:
 	//Ref<Mesh> m_Mesh;
 	Ref<Model> m_CubeModel;
 	Ref<Model> m_LightModel;
+	Ref<Model> m_Skybox;
 
 	Ref<Light> m_Light;
 

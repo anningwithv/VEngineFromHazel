@@ -11,9 +11,9 @@ namespace VEngine
 	{
 	public:
 		Material(const std::string& shaderName, const std::string& diffuseTex, const std::string& specularTex);
-		void Draw(glm::mat4& transform);
+		virtual void Draw(glm::mat4& transform);
 
-	private:
+	protected:
 		std::string m_ShaderName;
 		Ref<ShaderLibrary> m_ShaderLibrary;
 
