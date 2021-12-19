@@ -11,10 +11,10 @@ namespace VEngine
 		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
 		m_ShaderLibrary->Load("assets/shaders/" + shaderName + ".glsl");
 
-		//m_DiffuseTexture = VEngine::Texture2D::Create("assets/textures/" + diffuseTex);
-		//m_SpecularTexture = VEngine::Texture2D::Create("assets/textures/" + specularTex);
-		m_DiffuseTexture = VEngine::Texture2D::Create("assets/objects/backpack/diffuse.jpg");
-		m_SpecularTexture = VEngine::Texture2D::Create("assets/objects/backpack/specular.jpg");
+		m_DiffuseTexture = VEngine::Texture2D::Create(diffuseTex);
+		m_SpecularTexture = VEngine::Texture2D::Create(specularTex);
+		//m_DiffuseTexture = VEngine::Texture2D::Create("assets/objects/backpack/diffuse.jpg");
+		//m_SpecularTexture = VEngine::Texture2D::Create("assets/objects/backpack/specular.jpg");
 	}
 
 	void Material::Draw(glm::mat4& transform)

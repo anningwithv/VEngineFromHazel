@@ -2,7 +2,7 @@
 
 namespace VEngine
 {
-	CubeModel::CubeModel(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string & shaderName):Model(pos, scale, rotation, shaderName)
+	CubeModel::CubeModel(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string & shaderName, const std::string& diffuseTex, const std::string& specularTex):Model(pos, scale, rotation, shaderName, diffuseTex, specularTex)
 	{
 		GLfloat vertices[] = {
 			// Positions          // Texture Coords //Normal

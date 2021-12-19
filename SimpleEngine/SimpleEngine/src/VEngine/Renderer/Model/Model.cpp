@@ -4,9 +4,9 @@
 
 namespace VEngine
 {
-	Model::Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName)
+	Model::Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName, const std::string& diffuseTex, const std::string& specularTex)
 	{
-		m_Material = std::make_shared<Material>(shaderName, "Box.jpg", "Box_specular.jpg");
+		m_Material = std::make_shared<Material>(shaderName, diffuseTex, specularTex);
 
 		//m_ShaderName = shaderName;
 		
@@ -17,7 +17,7 @@ namespace VEngine
 		RefreshTranform();
 	}
 
-	Model::Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string & shaderName, const std::string & modelPath):Model(pos, scale, rotation, shaderName)
+	Model::Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string & shaderName, const std::string & modelPath, const std::string& diffuseTex, const std::string& specularTex):Model(pos, scale, rotation, shaderName, diffuseTex, specularTex)
 	{
 		//std::string path = "assets/objects/backpack/backpack.obj";
 		LoadModel(modelPath);

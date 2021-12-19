@@ -16,9 +16,9 @@ namespace VEngine
 	{
 	public:
 
-		Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName);
+		Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName, const std::string& diffuseTex, const std::string& specularTex);
 		
-		Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName, const std::string& modelPath);
+		Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName, const std::string& modelPath, const std::string& diffuseTex, const std::string& specularTex);
 
 		 
 		Model(std::string& path)

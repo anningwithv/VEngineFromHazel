@@ -1,4 +1,4 @@
-// Unlit Shader
+// Basic Texture Shader
 
 #type vertex
 #version 330 core
@@ -33,14 +33,45 @@ in vec2 v_TexCoord;
 in vec3 v_Normal;
 in vec3 v_Position;
 
-uniform sampler2D u_Texture;
-uniform vec4 u_LightColor;
-uniform vec3 u_LightPos;
 uniform float u_AmbientStrength;
 uniform vec3 u_CameraPos;
 
+struct Material
+{
+    sampler2D diffuse;
+    sampler2D specular;
+    float shininess;
+};
+uniform Material material;
+
+struct Light
+{
+    vec3 position;
+    vec3 color;
+};
+uniform Light light;
+
+struct DirLight 
+{
+    vec3 direction;
+    vec3 color;
+};  
+uniform DirLight dirLight;
+
+struct PointLight 
+{
+    vec3 position;
+
+    float constant;
+    float linear;
+    float quadratic;  
+
+    vec3 color;
+};  
+#define NR_POINT_LIGHTS 1  
+uniform PointLight pointLights[NR_POINT_LIGHTS];
+
 void main()
 {
-	//color = texture(u_Texture, v_TexCoord);
-	color = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	color = texture(material.diffuse, v_TexCoord);
 }
