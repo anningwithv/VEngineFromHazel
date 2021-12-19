@@ -31,8 +31,8 @@ namespace VEngine {
 		glm::vec3 m_CameraPosition = { 0.0f, 0.0f, 0.0f };
 		glm::vec3 m_CameraRotation = { 0.0f, 0.0f, 0.0f };
 
-		float m_CameraTranslationSpeed = 0.5f;
-		float m_CameraRotationSpeed = 1.0f;
+		float m_CameraTranslationSpeed = 0.05f;
+		float m_CameraRotationSpeed = 0.1f;
 	};
 
 }

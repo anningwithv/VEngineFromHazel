@@ -18,31 +18,33 @@ namespace VEngine
 
 		Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName);
 		
+		Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName, const std::string& modelPath);
+
+		 
 		Model(std::string& path)
 		{
 			this->LoadModel(path);
 		}
 
 		//void Draw(Shader shader);
-		void Draw(TimeStep ts);
+		virtual void Draw(TimeStep ts);
 		void SetPosition(glm::vec3 position);
 		void SetRotation(glm::vec3 rotation);
 		void SetScale(glm::vec3 scale);
 		glm::mat4 GetTransform();
 
-	private:
+	protected:
 		void RefreshTranform();
 
-	private:
-		Mesh* m_Mesh;
+	protected:
 		Ref<Material> m_Material;
-		//Material* m_Material;
+
 		Texture* m_DiffuseTexture;
 		Texture* m_SpecularTexture;
 
 		glm::mat4 m_Transform;
 
-		std::string m_ShaderName;
+		//std::string m_ShaderName;
 
 		glm::vec3 m_Position;
 		glm::vec3 m_Rotation;
@@ -53,7 +55,7 @@ namespace VEngine
 		std::string directory;
 
 		/*  私有成员函数   */
-		void LoadModel(std::string& path);
+		void LoadModel(const std::string& path);
 		void ProcessNode(aiNode* node, const aiScene* scene);
 		Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene);
 		std::vector<Texture> LoadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string& typeName);

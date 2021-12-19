@@ -147,6 +147,9 @@
     <ClCompile Include="src\VEngine\Renderer\Light\PointLight.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\VEngine\Renderer\Model\CubeModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\VEngine\Events\ApplicationEvent.h">
@@ -309,6 +312,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Renderer\Light\PointLight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\Model\CubeModel.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

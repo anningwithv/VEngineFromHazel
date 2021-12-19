@@ -19,14 +19,14 @@ namespace VEngine
 	void CameraController::OnUpdate(TimeStep ts)
 	{
 		if (Input::IsKeyPressed(VENGINE_KEY_A))
-			m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
+			m_CameraPosition += m_Camera->GetCameraRight() * (m_CameraTranslationSpeed * ts);
 		else if (Input::IsKeyPressed(VENGINE_KEY_D))
-			m_CameraPosition.x += m_CameraTranslationSpeed * ts;
+			m_CameraPosition -= m_Camera->GetCameraRight() * (m_CameraTranslationSpeed * ts);
 
 		if (Input::IsKeyPressed(VENGINE_KEY_W))
-			m_CameraPosition.y += m_CameraTranslationSpeed * ts;
+			m_CameraPosition += m_Camera->GetCameraForward() * (m_CameraTranslationSpeed * ts);
 		else if (Input::IsKeyPressed(VENGINE_KEY_S))
-			m_CameraPosition.y -= m_CameraTranslationSpeed * ts;
+			m_CameraPosition -= m_Camera->GetCameraForward() * (m_CameraTranslationSpeed * ts);
 
 		if (m_Rotation)
 		{

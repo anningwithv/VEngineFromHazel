@@ -11,8 +11,10 @@ namespace VEngine
 		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
 		m_ShaderLibrary->Load("assets/shaders/" + shaderName + ".glsl");
 
-		m_DiffuseTexture = VEngine::Texture2D::Create("assets/textures/" + diffuseTex);
-		m_SpecularTexture = VEngine::Texture2D::Create("assets/textures/" + specularTex);
+		//m_DiffuseTexture = VEngine::Texture2D::Create("assets/textures/" + diffuseTex);
+		//m_SpecularTexture = VEngine::Texture2D::Create("assets/textures/" + specularTex);
+		m_DiffuseTexture = VEngine::Texture2D::Create("assets/objects/backpack/diffuse.jpg");
+		m_SpecularTexture = VEngine::Texture2D::Create("assets/objects/backpack/specular.jpg");
 	}
 
 	void Material::Draw(glm::mat4& transform)
@@ -39,7 +41,7 @@ namespace VEngine
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("u_CameraPos", Renderer::s_SceneData->CameraPos);
 
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("dirLight.direction", glm::vec3(1.0f, 1.0f, 1.0f));
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("dirLight.color", glm::vec3(0.0f, 1.0f, 1.0f));
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("dirLight.color", glm::vec3(1.0f, 1.0f, 1.0f));
 
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("pointLights[0].color", Renderer::s_SceneData->LightColor);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("pointLights[0].position", Renderer::s_SceneData->LightPos);

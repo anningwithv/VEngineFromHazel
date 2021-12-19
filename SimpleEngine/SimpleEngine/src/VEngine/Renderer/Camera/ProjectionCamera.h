@@ -18,9 +18,5 @@ namespace VEngine
 	private:
 		glm::vec3 m_TargetPos;
 		glm::vec3 m_WorldUp;
-
-		glm::vec3 m_CameraUp;
-		glm::vec3 m_CameraForward;
-		glm::vec3 m_CameraRight;
 	};
 }
