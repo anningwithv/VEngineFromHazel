@@ -27,14 +27,18 @@ namespace VEngine
 		//glUniformMatrix4fv(glGetUniformLocation(skyboxShader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 		//glUniformMatrix4fv(glGetUniformLocation(skyboxShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", Renderer::s_SceneData->ViewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("projection", Renderer::s_SceneData->ProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("view", glm::mat4(glm::mat3(Renderer::s_SceneData->ViewMatrix)));
+
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
 		// skybox cube
 		//glBindVertexArray(skyboxVAO);
 		//glActiveTexture(GL_TEXTURE0);
 		//glUniform1i(glGetUniformLocation(shader.Program, "skybox"), 0);
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformInt("skybox", 3);
-		glBindTexture(3/*GL_TEXTURE_CUBE_MAP*/, m_CubemapTexture);
+		//std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformInt("skybox", 3);
+		//glBindTexture(3/*GL_TEXTURE_CUBE_MAP*/, m_CubemapTexture);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, m_CubemapTexture);
 		//glDrawArrays(GL_TRIANGLES, 0, 36);
 		//glBindVertexArray(0);
 
@@ -44,15 +48,15 @@ namespace VEngine
 	{
 		GLuint textureID;
 		glGenTextures(1, &textureID);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 
 		int width, height, channels;
 		//unsigned char* image;
 
-		glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 		for (GLuint i = 0; i < faces.size(); i++)
 		{
 			//OpenGL要求y轴0.0坐标是在图片的底部的，但是图片的y轴0.0坐标通常在顶部
-			stbi_set_flip_vertically_on_load(1);
+			//stbi_set_flip_vertically_on_load(1);
 
 			stbi_uc* data = stbi_load(faces[i], &width, &height, &channels, 0);
 			//image = SOIL_load_image(faces[i], &width, &height, 0, SOIL_LOAD_RGB);

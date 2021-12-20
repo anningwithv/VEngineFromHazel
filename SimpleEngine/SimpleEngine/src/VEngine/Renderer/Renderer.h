@@ -22,6 +22,8 @@ namespace VEngine
 		struct SceneData
 		{
 			glm::mat4 ViewProjectionMatrix;
+			glm::mat4 ViewMatrix;
+			glm::mat4 ProjectionMatrix;
 			glm::vec3 CameraPos;
 			glm::vec3 LightPos;
 			glm::vec3 LightColor;

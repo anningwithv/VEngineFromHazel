@@ -17,6 +17,8 @@ namespace VEngine
 
 		s_SceneData->CameraPos = s_Camera->GetPosition();
 		s_SceneData->ViewProjectionMatrix = camera->GetViewProjectionMatrix();
+		s_SceneData->ViewMatrix = camera->GetViewMatrix();
+		s_SceneData->ProjectionMatrix = camera->GetProjectionMatrix();
 
 		s_SceneData->LightPos = light->GetLightPosition();
 		s_SceneData->LightColor = light->GetLightColor();

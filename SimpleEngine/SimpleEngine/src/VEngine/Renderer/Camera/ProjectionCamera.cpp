@@ -30,8 +30,9 @@ namespace VEngine
 		m_CameraRight = glm::normalize(glm::cross(m_WorldUp, m_CameraForward));
 		m_CameraUp = glm::normalize(glm::cross(m_CameraForward, m_CameraRight));
 
-		glm::mat4 projTrans = glm::perspective(glm::radians(45.0f), (float)1280.0f / (float)720.0f, 0.1f, 100.0f);
-		m_ViewProjectionMatrix = projTrans * glm::lookAt(m_Position, m_Position + m_CameraForward, m_CameraUp);
+		m_ProjectionMatrix = glm::perspective(glm::radians(45.0f), (float)1280.0f / (float)720.0f, 0.1f, 100.0f);
+		m_ViewMatrix = glm::lookAt(m_Position, m_Position + m_CameraForward, m_CameraUp);
+		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
 	}
 
 }
