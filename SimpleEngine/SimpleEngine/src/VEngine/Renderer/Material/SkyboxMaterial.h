@@ -17,5 +17,8 @@ namespace VEngine
 	private:
 		GLuint LoadCubemap(std::vector<const GLchar*> faces);
 		GLuint m_CubemapTexture;
+
+		unsigned int m_skyboxVAO;
+		unsigned int m_skyboxVBO;
 	};
 }
