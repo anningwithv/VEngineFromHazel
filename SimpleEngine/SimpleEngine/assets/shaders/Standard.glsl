@@ -36,6 +36,8 @@ in vec3 v_Position;
 uniform float u_AmbientStrength;
 uniform vec3 u_CameraPos;
 
+uniform samplerCube skybox;
+
 struct Material
 {
     sampler2D diffuse;
@@ -137,4 +139,9 @@ void main()
         result += CalcPointLight(pointLights[i], normal, v_Position, viewDir);
 
 	color = vec4(result, 1.0f);
+
+	//Ìì¿ÕºÐ·¢Éä
+	vec3 I = normalize(v_Position - u_CameraPos);
+    vec3 R = reflect(I, normalize(normal));
+    color = texture(skybox, R);
 }
