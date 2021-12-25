@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\VEngine\Renderer\Model\QuadModel.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Model\SkyboxModel.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Material\SkyboxMaterial.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Model\CubeModel.cpp" />
@@ -209,11 +210,13 @@
     <ClCompile Include="src\Platform\Windows\WinWindow.cpp" />
     <ClCompile Include="src\VEngine\Core\TimeStep.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Shader\Shader.cpp" />
+    <ClCompile Include="src\VEngine\Renderer\ShadowMapRenderer.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Texture\Texture.cpp" />
     <ClCompile Include="vendor\glad\glad.c" />
     <ClCompile Include="src\VEngine\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\VEngine\Renderer\Model\QuadModel.h" />
     <ClInclude Include="src\VEngine\Renderer\Model\SkyboxModel.h" />
     <ClInclude Include="src\VEngine\Renderer\Material\SkyboxMaterial.h" />
     <ClInclude Include="src\VEngine\Renderer\Model\CubeModel.h" />
@@ -266,6 +269,7 @@
     <ClInclude Include="src\VEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\VEngine\Log.h" />
     <ClInclude Include="src\VEngine\MouseButtonCodes.h" />
+    <ClInclude Include="src\VEngine\Renderer\ShadowMapRenderer.h" />
     <ClInclude Include="src\VEngine\Window.h" />
     <ClInclude Include="src\Platform\Windows\WinWindow.h" />
     <ClInclude Include="src\VEngine\Renderer\VertexArray.h" />

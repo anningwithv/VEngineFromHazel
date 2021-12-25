@@ -40,7 +40,7 @@ namespace VEngine
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat("u_AmbientStrength", 1.5f);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("u_CameraPos", Renderer::s_SceneData->CameraPos);
 
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("dirLight.direction", glm::vec3(1.0f, 1.0f, 1.0f));
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("dirLight.direction", glm::vec3(0.0f, 0.0f, 0.0f) - Renderer::s_SceneData->LightPos);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("dirLight.color", glm::vec3(1.0f, 1.0f, 1.0f));
 
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("pointLights[0].color", Renderer::s_SceneData->LightColor);

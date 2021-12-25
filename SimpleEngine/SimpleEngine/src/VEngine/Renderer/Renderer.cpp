@@ -5,13 +5,14 @@ namespace VEngine
 {
 	Renderer::SceneData* Renderer::s_SceneData = new Renderer::SceneData;
 	Camera* Renderer::s_Camera;
+	ShadowMapRenderer* Renderer::s_ShadowMapRenderer;
 
 	void Renderer::Init()
 	{
 		RendererCommand::Init();
 	}
 
-	void Renderer::BeginScene(Camera* camera, const Ref<Light>& light)
+	void Renderer::BeginScene(Camera* camera, const Ref<Light>& light, std::vector<Ref<Model>> models)
 	{
 		s_Camera = camera;
 
@@ -22,6 +23,12 @@ namespace VEngine
 
 		s_SceneData->LightPos = light->GetLightPosition();
 		s_SceneData->LightColor = light->GetLightColor();
+
+		if (s_ShadowMapRenderer == nullptr)
+		{
+			s_ShadowMapRenderer = new ShadowMapRenderer();
+		}
+		s_ShadowMapRenderer->RenderShadowMap(models);
 	}
 
 	void Renderer::EndScene(Camera*  camera)

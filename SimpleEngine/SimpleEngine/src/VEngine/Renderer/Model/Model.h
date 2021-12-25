@@ -29,6 +29,7 @@ namespace VEngine
 
 		//void Draw(Shader shader);
 		virtual void Draw(TimeStep ts);
+		virtual void SubmitMesh();
 		void SetPosition(glm::vec3 position);
 		void SetRotation(glm::vec3 rotation);
 		void SetScale(glm::vec3 scale);

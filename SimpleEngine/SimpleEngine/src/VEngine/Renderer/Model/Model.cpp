@@ -32,6 +32,12 @@ namespace VEngine
 			this->meshes[i].Draw(ts);
 	}
 
+	void Model::SubmitMesh()
+	{
+		for (GLuint i = 0; i < this->meshes.size(); i++)
+			this->meshes[i].Draw(0);
+	}
+
 	void Model::SetPosition(glm::vec3 position)
 	{
 		m_Position = position;

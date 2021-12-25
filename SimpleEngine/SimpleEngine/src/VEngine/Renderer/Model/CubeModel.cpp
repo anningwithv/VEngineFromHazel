@@ -66,4 +66,10 @@ namespace VEngine
 		m_Mesh->Draw(ts);
 
 	}
+
+	void CubeModel::SubmitMesh()
+	{
+		m_Mesh->Draw(0);
+
+	}
 }

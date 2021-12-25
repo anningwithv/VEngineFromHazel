@@ -82,7 +82,7 @@ vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir)
     vec3 reflectDir = reflect(-lightDir, normal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     // 合并各个光照分量
-    vec3 ambient  = light.color  * vec3(texture(material.diffuse, v_TexCoord));
+    vec3 ambient  = light.color  * vec3(texture(material.diffuse, v_TexCoord)) * 0.00f;
     vec3 diffuse  = light.color  * diff * vec3(texture(material.diffuse, v_TexCoord));
     vec3 specular = light.color * spec * vec3(texture(material.specular, v_TexCoord));
     return (ambient + diffuse + specular);
@@ -114,34 +114,25 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 
 void main()
 {
-    // 环境光
-    //vec3 ambient = light.color * material.ambient;
-
-	// 漫反射光
 	vec3 normal = normalize(v_Normal);
-	vec3 lightDir = normalize(light.position - v_Position);
-	float diff = max(dot(normal, lightDir), 0.0f);
-	vec3 diffuse = diff * vec3(texture(material.diffuse, v_TexCoord)) * light.color;
-
-	// 镜面高光
 	vec3 viewDir = normalize(u_CameraPos - v_Position);
-	vec3 reflectDir = reflect(-lightDir, normal);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0f), material.shininess);
-	vec3 specular = (vec3(texture(material.specular, v_TexCoord)) * spec * 10.0f) * light.color;
-
-	vec3 col = (diffuse + specular);
 
 	// 第一步，计算平行光照
     vec3 result = CalcDirLight(dirLight, normal, viewDir);
-	//vec3 result = vec3(0.0f, 0.0f, 0.0f);
     // 第二步，计算顶点光照
     for(int i = 0; i < NR_POINT_LIGHTS; i++)
         result += CalcPointLight(pointLights[i], normal, v_Position, viewDir);
 
 	color = vec4(result, 1.0f);
 
-	//天空盒发射
+	//天空盒反射
 	vec3 I = normalize(v_Position - u_CameraPos);
     vec3 R = reflect(I, normalize(normal));
-    color = texture(skybox, R);
+    //color = texture(skybox, R);
+
+	//天空盒折射
+	float ratio = 1.0f/1.52f;
+	vec3 I2 = normalize(v_Position - u_CameraPos);
+    vec3 R2 = refract(I, normalize(normal), ratio);
+    //color = texture(skybox, R2);
 }

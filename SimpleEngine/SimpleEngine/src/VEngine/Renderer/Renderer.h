@@ -4,6 +4,7 @@
 #include "Camera/Camera.h"
 #include "Shader/Shader.h"
 #include "Light/Light.h"
+#include "ShadowMapRenderer.h"
 
 namespace VEngine
 {
@@ -11,7 +12,7 @@ namespace VEngine
 	{
 	public:
 		static void Init();
-		static void BeginScene(Camera*  camera, const Ref<Light>& light);
+		static void BeginScene(Camera*  camera, const Ref<Light>& light, std::vector<Ref<Model>> models);
 		static void EndScene(Camera*  camera);
 		static void Submit(/*const std::shared_ptr<Shader>& shader, */const std::shared_ptr<VertexArray>& vertexArray,
 			const glm::mat4& transform = glm::mat4(1.0f));
@@ -32,5 +33,6 @@ namespace VEngine
 
 	private:
 		static Camera* s_Camera;
+		static ShadowMapRenderer* s_ShadowMapRenderer;
 	};
 }
