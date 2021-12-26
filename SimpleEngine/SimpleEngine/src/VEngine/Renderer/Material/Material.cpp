@@ -49,5 +49,9 @@ namespace VEngine
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat("pointLights[0].linear", 1.0f);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat("pointLights[0].quadratic", 1.0f);
 
+		//Shadow 
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformInt("shadowMap", 3);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("lightSpaceMatrix", Renderer::s_ShadowMapRenderer->GetLightSpaceMatrix());
+
 	}
 }

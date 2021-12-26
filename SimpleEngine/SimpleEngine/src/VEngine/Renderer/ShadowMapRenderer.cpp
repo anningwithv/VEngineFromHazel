@@ -20,8 +20,10 @@ namespace VEngine
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+		GLfloat borderColor[] = { 1.0, 1.0, 1.0, 1.0 };
+		glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
 		// attach depth texture as FBO's depth buffer
 		glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
@@ -32,12 +34,14 @@ namespace VEngine
 
 	void ShadowMapRenderer::RenderShadowMap(std::vector<Ref<Model>> models)
 	{
+		//为了修复阴影悬浮问题，我们要进行正面剔除，先必须开启GL_CULL_FACE
+		glCullFace(GL_FRONT);
+
 		auto simpleDepthShader = m_ShaderLibrary->Get("ShadowMapDepth");
 		auto debugDepthQuad = m_ShaderLibrary->Get("DebugQuad");
 		// 1. render depth of scene to texture (from light's perspective)
 		// --------------------------------------------------------------
 		glm::mat4 lightProjection, lightView;
-		glm::mat4 lightSpaceMatrix;
 		float near_plane = 1.0f, far_plane = 7.5f;
 		lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
 		lightView = glm::lookAt(Renderer::s_SceneData->LightPos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
@@ -64,9 +68,11 @@ namespace VEngine
 		std::dynamic_pointer_cast<OpenGLShader>(debugDepthQuad)->UploadUniformFloat("near_plane", near_plane);
 		std::dynamic_pointer_cast<OpenGLShader>(debugDepthQuad)->UploadUniformFloat("far_plane", far_plane);
 
-		glActiveTexture(GL_TEXTURE0);
+		glActiveTexture(GL_TEXTURE3);
 		glBindTexture(GL_TEXTURE_2D, depthMap);
-		RenderQuad();
+		//RenderQuad();
+
+		glCullFace(GL_BACK);// 不要忘记设回原先的culling face
 	}
 
 	// renders the 3D scene

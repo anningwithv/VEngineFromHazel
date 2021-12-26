@@ -12,6 +12,8 @@ namespace VEngine
 	public:
 		ShadowMapRenderer();
 		void RenderShadowMap(std::vector<Ref<Model>> models);
+		unsigned int GetDepthMapId() { return depthMap; }
+		glm::mat4 GetLightSpaceMatrix() { return lightSpaceMatrix; }
 
 	private:
 		void RenderScene(std::vector<Ref<Model>> models, Ref<Shader> shader);
@@ -21,5 +23,6 @@ namespace VEngine
 		const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
 		unsigned int depthMapFBO;
 		unsigned int depthMap;
+		glm::mat4 lightSpaceMatrix;
 	};
 }

@@ -31,8 +31,9 @@ namespace VEngine
 		};
 		static SceneData* s_SceneData;
 
+		static ShadowMapRenderer* s_ShadowMapRenderer;
+
 	private:
 		static Camera* s_Camera;
-		static ShadowMapRenderer* s_ShadowMapRenderer;
 	};
 }
