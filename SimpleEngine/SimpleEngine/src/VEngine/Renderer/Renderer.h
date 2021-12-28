@@ -5,6 +5,7 @@
 #include "Shader/Shader.h"
 #include "Light/Light.h"
 #include "ShadowMapRenderer.h"
+#include "GBufferRenderer.h"
 
 namespace VEngine
 {
@@ -32,6 +33,10 @@ namespace VEngine
 		static SceneData* s_SceneData;
 
 		static ShadowMapRenderer* s_ShadowMapRenderer;
+		static GBufferRenderer* s_GBufferRenderer;
+
+		static unsigned int SCR_WIDTH;
+		static unsigned int SCR_HEIGHT;
 
 	private:
 		static Camera* s_Camera;

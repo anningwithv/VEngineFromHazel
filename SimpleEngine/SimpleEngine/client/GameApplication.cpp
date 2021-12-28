@@ -39,10 +39,10 @@ public:
 		m_Skybox->Draw(deltaTime);
 
 
-		for (int i = 0; i < m_Models.size(); i++)
-		{
-			m_Models[i]->Draw(deltaTime);
-		}
+		//for (int i = 0; i < m_Models.size(); i++)
+		//{
+		//	m_Models[i]->Draw(deltaTime);
+		//}
 
 		Renderer::EndScene(m_CameraController->GetCamera());
 	}

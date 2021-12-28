@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\VEngine\Renderer\GBufferRenderer.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Model\QuadModel.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Model\SkyboxModel.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Material\SkyboxMaterial.cpp" />
@@ -216,6 +217,7 @@
     <ClCompile Include="src\VEngine\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\VEngine\Renderer\GBufferRenderer.h" />
     <ClInclude Include="src\VEngine\Renderer\Model\QuadModel.h" />
     <ClInclude Include="src\VEngine\Renderer\Model\SkyboxModel.h" />
     <ClInclude Include="src\VEngine\Renderer\Material\SkyboxMaterial.h" />

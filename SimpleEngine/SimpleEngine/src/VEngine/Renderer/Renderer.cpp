@@ -6,6 +6,10 @@ namespace VEngine
 	Renderer::SceneData* Renderer::s_SceneData = new Renderer::SceneData;
 	Camera* Renderer::s_Camera;
 	ShadowMapRenderer* Renderer::s_ShadowMapRenderer;
+	GBufferRenderer* Renderer::s_GBufferRenderer;
+
+	unsigned int Renderer::SCR_WIDTH = 1280;
+	unsigned int Renderer::SCR_HEIGHT = 760;
 
 	void Renderer::Init()
 	{
@@ -29,6 +33,12 @@ namespace VEngine
 			s_ShadowMapRenderer = new ShadowMapRenderer();
 		}
 		s_ShadowMapRenderer->RenderShadowMap(models);
+
+		if (s_GBufferRenderer == nullptr)
+		{
+			s_GBufferRenderer = new GBufferRenderer();
+		}
+		s_GBufferRenderer->Render(models);
 	}
 
 	void Renderer::EndScene(Camera*  camera)
