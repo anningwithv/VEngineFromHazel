@@ -213,6 +213,7 @@
     <ClCompile Include="src\VEngine\Renderer\Shader\Shader.cpp" />
     <ClCompile Include="src\VEngine\Renderer\ShadowMapRenderer.cpp" />
     <ClCompile Include="src\VEngine\Renderer\Texture\Texture.cpp" />
+    <ClCompile Include="src\VEngine\Renderer\SSAO\SSAORenderer.cpp" />
     <ClCompile Include="vendor\glad\glad.c" />
     <ClCompile Include="src\VEngine\Renderer\VertexArray.cpp" />
   </ItemGroup>
@@ -277,6 +278,7 @@
     <ClInclude Include="src\VEngine\Renderer\VertexArray.h" />
     <ClInclude Include="src\VEngine\Core\TimeStep.h" />
     <ClInclude Include="src\VEngine\Renderer\Texture\Texture.h" />
+    <ClInclude Include="src\VEngine\Renderer\SSAO\SSAORenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
