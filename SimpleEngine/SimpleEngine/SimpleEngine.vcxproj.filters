@@ -162,10 +162,10 @@
     <ClCompile Include="src\VEngine\Renderer\ShadowMapRenderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\VEngine\Renderer\GBufferRenderer.cpp">
+    <ClCompile Include="src\VEngine\Renderer\SSAO\SSAORenderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\VEngine\Renderer\SSAO\SSAORenderer.cpp">
+    <ClCompile Include="src\VEngine\Renderer\DeferedRenderer\GBufferRenderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -347,10 +347,10 @@
     <ClInclude Include="src\VEngine\Renderer\ShadowMapRenderer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VEngine\Renderer\GBufferRenderer.h">
+    <ClInclude Include="src\VEngine\Renderer\SSAO\SSAORenderer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\VEngine\Renderer\SSAO\SSAORenderer.h">
+    <ClInclude Include="src\VEngine\Renderer\DeferedRenderer\GBufferRenderer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

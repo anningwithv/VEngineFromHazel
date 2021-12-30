@@ -5,7 +5,7 @@
 #include "Shader/Shader.h"
 #include "Light/Light.h"
 #include "ShadowMapRenderer.h"
-#include "GBufferRenderer.h"
+#include "VEngine/Renderer/DeferedRenderer/GBufferRenderer.h"
 
 namespace VEngine
 {

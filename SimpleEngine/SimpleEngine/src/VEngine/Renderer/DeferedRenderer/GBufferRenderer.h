@@ -3,7 +3,8 @@
 #include "stb_image/stb_image.h"
 #include <glad/glad.h>
 #include "VEngine/Core/Core.h"
-#include "Model/Model.h"
+#include "VEngine/Renderer/Model/Model.h"
+#include "VEngine/Renderer/SSAO/SSAORenderer.h"
 
 namespace VEngine
 {
@@ -23,5 +24,7 @@ namespace VEngine
 		unsigned int gBuffer;
 		unsigned int gPosition, gNormal, gAlbedoSpec;
 		Ref<ShaderLibrary> m_ShaderLibrary;
+
+		Ref<SSAORenderer> m_SSAORenderer;
 	};
 }

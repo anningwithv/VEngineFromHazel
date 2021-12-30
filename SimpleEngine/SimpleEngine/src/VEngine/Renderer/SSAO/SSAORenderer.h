@@ -10,17 +10,20 @@ namespace VEngine
 	class SSAORenderer
 	{
 	public:
-		SSAORenderer(int gPositionBuffer, int gNormalBuffer, int gAlbedoBuffer);
-		void RenderSSAO(std::vector<Ref<Model>> models);
+		SSAORenderer(unsigned int gPositionBuffer, unsigned int gNormalBuffer);
+		void Render();
 
 	private:
 		float Lerp(float a, float b, float f);
 		//void RenderScene(std::vector<Ref<Model>> models, Ref<Shader> shader);
 		void RenderQuad();
 
-		int gPositionBuffer;
-		int gNormalBuffer;
-		int gNoiseTex;
+		unsigned int gPositionBuffer;
+		unsigned int gNormalBuffer;
+		unsigned int gNoiseTex;
+
+		unsigned int ssaoFBO, ssaoBlurFBO;
+		unsigned int ssaoColorBuffer, ssaoColorBufferBlur;
 
 		std::vector<glm::vec3> ssaoKernel;
 		std::vector<glm::vec3> ssaoNoise;

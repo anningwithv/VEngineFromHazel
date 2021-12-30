@@ -6,11 +6,10 @@
 
 namespace VEngine
 {
-	SSAORenderer::SSAORenderer(int gPositionBuffer, int gNormalBuffer, int gNoiseTex)
+	SSAORenderer::SSAORenderer(unsigned int gPositionBuffer, unsigned int gNormalBuffer)
 	{
 		this->gPositionBuffer = gPositionBuffer;
 		this->gNormalBuffer = gNormalBuffer;
-		this->gNoiseTex = gNoiseTex;
 
 		m_ShaderLibrary = std::make_shared<ShaderLibrary>();
 		m_ShaderLibrary->Load("assets/shaders/SSAO.glsl");
@@ -45,6 +44,33 @@ namespace VEngine
 			ssaoKernel.push_back(sample);
 		}
 
+		// create framebuffer to hold SSAO processing stage 
+	    // -----------------------------------------------------
+		//unsigned int ssaoFBO, ssaoBlurFBO;
+		glGenFramebuffers(1, &ssaoFBO);  glGenFramebuffers(1, &ssaoBlurFBO);
+		glBindFramebuffer(GL_FRAMEBUFFER, ssaoFBO);
+		//unsigned int ssaoColorBuffer, ssaoColorBufferBlur;
+		// SSAO color buffer
+		glGenTextures(1, &ssaoColorBuffer);
+		glBindTexture(GL_TEXTURE_2D, ssaoColorBuffer);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Renderer::SCR_WIDTH, Renderer::SCR_HEIGHT, 0, GL_RED, GL_FLOAT, NULL);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, ssaoColorBuffer, 0);
+		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+			VENGINE_ERROR("SSAO Framebuffer not complete");
+		// and blur stage
+		glBindFramebuffer(GL_FRAMEBUFFER, ssaoBlurFBO);
+		glGenTextures(1, &ssaoColorBufferBlur);
+		glBindTexture(GL_TEXTURE_2D, ssaoColorBufferBlur);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Renderer::SCR_WIDTH, Renderer::SCR_HEIGHT, 0, GL_RED, GL_FLOAT, NULL);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, ssaoColorBufferBlur, 0);
+		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+			VENGINE_ERROR("SSAO Blur Framebuffer not complete!");
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
 		// generate noise texture
 		// ----------------------
 		//std::vector<glm::vec3> ssaoNoise;
@@ -53,8 +79,8 @@ namespace VEngine
 			glm::vec3 noise(randomFloats(generator) * 2.0 - 1.0, randomFloats(generator) * 2.0 - 1.0, 0.0f); // rotate around z-axis (in tangent space)
 			ssaoNoise.push_back(noise);
 		}
-		unsigned int noiseTexture; glGenTextures(1, &noiseTexture);
-		glBindTexture(GL_TEXTURE_2D, noiseTexture);
+		glGenTextures(1, &gNoiseTex);
+		glBindTexture(GL_TEXTURE_2D, gNoiseTex);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, 4, 4, 0, GL_RGB, GL_FLOAT, &ssaoNoise[0]);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -63,12 +89,11 @@ namespace VEngine
 
 	}
 
-	void SSAORenderer::RenderSSAO(std::vector<Ref<Model>> models)
+	void SSAORenderer::Render()
 	{
 		auto shaderSSAO = m_ShaderLibrary->Get("SSAO");
 		auto shaderSSAOBlur = m_ShaderLibrary->Get("SSAOBlur");
 
-		unsigned int ssaoFBO, ssaoBlurFBO;
 		// 1. geometry pass: render scene's geometry/color data into gbuffer
 		// -----------------------------------------------------------------
 
@@ -77,6 +102,7 @@ namespace VEngine
 		glBindFramebuffer(GL_FRAMEBUFFER, ssaoFBO);
 		glClear(GL_COLOR_BUFFER_BIT);
 		shaderSSAO->Bind();
+
 		// Send kernel + rotation 
 		for (unsigned int i = 0; i < 64; ++i)
 		{
@@ -97,18 +123,44 @@ namespace VEngine
 
 		// 3. blur SSAO texture to remove noise
 		// ------------------------------------
-		glBindFramebuffer(GL_FRAMEBUFFER, ssaoBlurFBO);
-		glClear(GL_COLOR_BUFFER_BIT);
-		shaderSSAOBlur->Bind();
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, ssaoColorBuffer);
-		RenderQuad();
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		//glBindFramebuffer(GL_FRAMEBUFFER, ssaoBlurFBO);
+		//glClear(GL_COLOR_BUFFER_BIT);
+		//shaderSSAOBlur->Bind();
+		//glActiveTexture(GL_TEXTURE0);
+		//glBindTexture(GL_TEXTURE_2D, ssaoColorBuffer);
+		//RenderQuad();
+		//glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	}
 
 	void SSAORenderer::RenderQuad()
 	{
+		unsigned int quadVAO = 0;
+		unsigned int quadVBO;
+
+		if (quadVAO == 0)
+		{
+			float quadVertices[] = {
+				// positions        // texture Coords
+				-1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
+				-1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
+				 1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
+				 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+			};
+			// setup plane VAO
+			glGenVertexArrays(1, &quadVAO);
+			glGenBuffers(1, &quadVBO);
+			glBindVertexArray(quadVAO);
+			glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+			glEnableVertexAttribArray(1);
+			glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+		}
+		glBindVertexArray(quadVAO);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		glBindVertexArray(0);
 	}
 
 	float SSAORenderer::Lerp(float a, float b, float f)

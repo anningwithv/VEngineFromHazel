@@ -63,6 +63,7 @@ namespace VEngine
 		std::dynamic_pointer_cast<OpenGLShader>(deferedRenderShader)->UploadUniformInt("gNormal", 1);
 		std::dynamic_pointer_cast<OpenGLShader>(deferedRenderShader)->UploadUniformInt("gAlbedoSpec", 2);
 
+		m_SSAORenderer = std::make_shared<SSAORenderer>(gPosition, gNormal);
 	}
 
 	void GBufferRenderer::Render(std::vector<Ref<Model>> models)
@@ -109,8 +110,8 @@ namespace VEngine
 		std::dynamic_pointer_cast<OpenGLShader>(deferedRenderShader)->UploadUniformFloat3("viewPos", Renderer::s_SceneData->CameraPos);
 
 		// finally render quad
-		RenderQuad();
-
+		//RenderQuad();
+		m_SSAORenderer->Render();
 	}
 
 	void GBufferRenderer::RenderScene(std::vector<Ref<Model>> models, Ref<Shader> shader)
