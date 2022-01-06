@@ -38,7 +38,7 @@ namespace VEngine
 		{
 			s_GBufferRenderer = new GBufferRenderer();
 		}
-		s_GBufferRenderer->Render(models);
+		//s_GBufferRenderer->Render(models);
 	}
 
 	void Renderer::EndScene(Camera*  camera)

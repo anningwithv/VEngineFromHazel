@@ -21,6 +21,8 @@ public:
 		m_Models.push_back(bigCube);
 		auto smallCube = std::make_shared<CubeModel>(glm::vec3(0.0f, -1.0f, -4.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), "Standard", "assets/textures/Box.jpg", "assets/textures/Box_specular.jpg");
 		m_Models.push_back(smallCube);
+		auto shpere = std::make_shared<SphereModel>(glm::vec3(0.0f, 0.0f, -4.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), "Standard", "assets/textures/Box.jpg", "assets/textures/Box_specular.jpg");
+		m_Models.push_back(shpere);
 		//auto lightModel = std::make_shared<CubeModel>(m_Light->GetLightPosition(), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.0f, 0.0f, 0.0f), "Unlit", "assets/textures/Box.jpg", "assets/textures/Box_specular.jpg");
 		//m_Models.push_back(lightModel);
 
@@ -39,10 +41,10 @@ public:
 		m_Skybox->Draw(deltaTime);
 
 
-		//for (int i = 0; i < m_Models.size(); i++)
-		//{
-		//	m_Models[i]->Draw(deltaTime);
-		//}
+		for (int i = 0; i < m_Models.size(); i++)
+		{
+			m_Models[i]->Draw(deltaTime);
+		}
 
 		Renderer::EndScene(m_CameraController->GetCamera());
 	}
