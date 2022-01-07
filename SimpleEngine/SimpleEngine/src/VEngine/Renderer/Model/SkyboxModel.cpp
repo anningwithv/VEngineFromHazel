@@ -4,8 +4,8 @@
 
 namespace VEngine
 {
-	SkyboxModel::SkyboxModel(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string & shaderName, const std::string& diffuseTex, const std::string& specularTex) 
-		:Model(pos, scale, rotation, shaderName, diffuseTex, specularTex)
+	SkyboxModel::SkyboxModel(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, Ref<Material> mat)
+		:Model(pos, scale, rotation, mat)
 	{
 		GLfloat vertices[] = {
 			// Positions          // Texture Coords //Normal
@@ -59,7 +59,7 @@ namespace VEngine
 		Vertex* vertexData = new Vertex(vertices, sizeof(vertices), indices, sizeof(indices) / sizeof(unsigned int));
 		m_Mesh = new Mesh(this, vertexData, textures);
 
-		m_Material = std::make_shared<SkyboxMaterial>(shaderName, diffuseTex, specularTex);
+		m_Material = mat;
 		
 	}
 

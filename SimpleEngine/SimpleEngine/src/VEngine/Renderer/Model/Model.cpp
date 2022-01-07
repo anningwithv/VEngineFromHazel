@@ -8,9 +8,10 @@ namespace VEngine
 	{
 	}
 
-	Model::Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName, const std::string& diffuseTex, const std::string& specularTex)
+	Model::Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, Ref<Material> material)
 	{
-		m_Material = std::make_shared<Material>(shaderName, diffuseTex, specularTex);
+		//m_Material = std::make_shared<Material>(shaderName, diffuseTex, specularTex);
+		m_Material = material;
 
 		m_Position = pos;
 		m_Rotation = rotation;
@@ -19,7 +20,8 @@ namespace VEngine
 		RefreshTranform();
 	}
 
-	Model::Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string & shaderName, const std::string & modelPath, const std::string& diffuseTex, const std::string& specularTex):Model(pos, scale, rotation, shaderName, diffuseTex, specularTex)
+	Model::Model(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, Ref<Material> mat, const std::string & modelPath)
+		:Model(pos, scale, rotation, mat)
 	{
 		LoadModel(modelPath);
 	}

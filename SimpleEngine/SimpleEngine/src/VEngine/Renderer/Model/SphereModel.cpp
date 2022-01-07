@@ -2,7 +2,8 @@
 
 namespace VEngine
 {
-	SphereModel::SphereModel(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string & shaderName, const std::string& diffuseTex, const std::string& specularTex):Model(pos, scale, rotation, shaderName, diffuseTex, specularTex)
+	SphereModel::SphereModel(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, Ref<Material> mat)
+		:Model(pos, scale, rotation, mat)
 	{
 		std::vector<glm::vec3> positions;
 		std::vector<glm::vec2> uv;

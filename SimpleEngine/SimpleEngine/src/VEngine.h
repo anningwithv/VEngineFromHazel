@@ -26,3 +26,6 @@
 #include "VEngine/Renderer/Light/Light.h"
 #include "VEngine/Renderer/Light/DirectionalLight.h"
 #include "VEngine/Renderer/Light/PointLight.h"
+#include "VEngine/Renderer/Material/Material.h"
+#include "VEngine/Renderer/Material/PBRMaterial.h"
+#include "VEngine/Renderer/Material/SkyboxMaterial.h"

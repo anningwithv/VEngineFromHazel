@@ -171,6 +171,9 @@
     <ClCompile Include="src\VEngine\Renderer\Model\SphereModel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\VEngine\Renderer\Material\PBRMaterial.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\VEngine\Events\ApplicationEvent.h">
@@ -357,6 +360,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\VEngine\Renderer\Model\SphereModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VEngine\Renderer\Material\PBRMaterial.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

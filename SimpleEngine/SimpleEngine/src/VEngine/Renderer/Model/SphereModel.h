@@ -7,7 +7,7 @@ namespace VEngine
 	class SphereModel : public Model
 	{
 	public:
-		SphereModel(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const std::string& shaderName, const std::string& diffuseTex, const std::string& specularTex);
+		SphereModel(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, Ref<Material> mat);
 		virtual void Draw(TimeStep ts) override;
 		virtual void SubmitMesh()  override;
 
