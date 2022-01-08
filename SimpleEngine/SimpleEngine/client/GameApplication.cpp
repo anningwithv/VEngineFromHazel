@@ -13,7 +13,7 @@ public:
 
 		m_Light = std::make_shared<PointLight>(glm::vec3(0.6f, 0.5f, 0.5f), glm::vec3(-2.0f, 1.0f, 1.0f));
 
-		auto skyMat = std::make_shared<Material>("Skybox", "assets/textures/Box.jpg", "assets/textures/Box_specular.jpg");
+		auto skyMat = std::make_shared<SkyboxMaterial>("Skybox", "assets/textures/Box.jpg", "assets/textures/Box_specular.jpg");
 		m_Skybox = std::make_shared<SkyboxModel>(m_Light->GetLightPosition(), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.0f, 0.0f, 0.0f), skyMat);
 		
 		//auto bagModel = std::make_shared<Model>(glm::vec3(1.0f, 0.0f, -5.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), "Standard", "assets/objects/backpack/backpack.obj", "assets/objects/backpack/diffuse.jpg", "assets/objects/backpack/specular.jpg");
